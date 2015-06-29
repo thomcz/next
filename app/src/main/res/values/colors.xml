@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="activityBar" type="color">#8bc34a</item>
+    <item name="background" type="color">#f1f8e9</item>
+    <item name="enabledLevel" type="color">#9ccc65</item>
+    <item name="disableLevel" type="color">#c5e1a5</item>
+</resources>

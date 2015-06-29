@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="name">
+        <item>Stage 1</item>
+        <item>Stage 2</item>
+        <item>Stage 3</item>
+    </string-array>
+
+    <integer-array name="size">
+        <item>5</item>
+        <item>5</item>
+        <item>5</item>
+    </integer-array>
+
+    <integer-array name="bottom">
+        <item>0</item>
+        <item>10</item>
+        <item>20</item>
+    </integer-array>
+
+    <integer-array name="limit">
+        <item>10</item>
+        <item>20</item>
+        <item>30</item>
+    </integer-array>
+
+    <integer-array name="image">
+        <item>@drawable/alpha</item>
+        <item>@drawable/beta</item>
+        <item>@drawable/gamma</item>
+    </integer-array>
+
+</resources>
