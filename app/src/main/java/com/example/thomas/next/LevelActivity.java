@@ -3,10 +3,10 @@ package com.example.thomas.next;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.text.Html;
+import android.text.Spanned;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -41,7 +41,7 @@ public class LevelActivity extends ActionBarActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
+        getMenuInflater().inflate(R.menu.menu_level, menu);
         return true;
     }
 
@@ -53,7 +53,12 @@ public class LevelActivity extends ActionBarActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.action_description) {
+            String msg = getResources().getString(R.string.dont_show_description);
+            if (level > actualLevel.getId()) {
+                msg = actualLevel.getResultString();
+            }
+            showDialog(msg, false);
             return true;
         }
 
@@ -64,18 +69,17 @@ public class LevelActivity extends ActionBarActivity {
     public void sendAnswer(View view) {
         int a = Integer.valueOf(answer.getText().toString());
         if (a == actualLevel.getResult()) {
-            showDialog(true);
+            showDialog(actualLevel.getResultString(), true);
         }
         else {
-            showDialog(false);
+            showDialog(getResources().getString(R.string.false_answer), false);
         }
     }
 
-    private void showDialog(final boolean right) {
+    private void showDialog(String msg, final boolean right) {
         AlertDialog ad = new AlertDialog.Builder(this).create();
         ad.setCancelable(false); // This blocks the 'BACK' button
-        ad.setMessage(right ? Html.fromHtml(actualLevel.getResultString()) :
-                getResources().getString(R.string.false_answer));
+        ad.setMessage(Html.fromHtml(msg));
         ad.setButton("OK", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
