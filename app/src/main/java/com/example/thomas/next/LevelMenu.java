@@ -48,12 +48,7 @@ public class LevelMenu extends ActionBarActivity {
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == 0) {
             if (resultCode == Activity.RESULT_OK) {
-                /*MainMenu activity = (MainMenu) getParent();
-                if (activity != null) {
-                    activity.levelUp();
-                    seriesAdapter.notifyDataSetChanged();
-                    setResult(Activity.RESULT_OK);
-                }*/
+
                 actualLevel++;
                 Intent intent = new Intent();
                 intent.putExtra("levelInt", actualLevel);

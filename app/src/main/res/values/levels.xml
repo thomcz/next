@@ -106,7 +106,7 @@
     </integer-array>
 
     <string-array name="resultString">
-        <item>+1</item>
+        <item>+1 &lt;u>asd&lt;/u></item>
         <item>+2</item>
         <item>2^n</item>
         <item>+3</item>

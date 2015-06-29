@@ -90,6 +90,7 @@ public class MainMenu extends ActionBarActivity {
         TypedArray resultString = resources.obtainTypedArray(R.array.resultString);
 
         for (int i = 0; i < id.length(); i++) {
+            String s = resultString.getString(i);
             levels.add(new Level(id.getInt(i, 0), series.getString(i), result.getInt(i, 0), resultString.getString(i)));
         }
         id.recycle();
@@ -97,15 +98,7 @@ public class MainMenu extends ActionBarActivity {
         result.recycle();
         resultString.recycle();
     }
-    /*private void levelAddTest() {
-        levels = new ArrayList<Level>();
-        levels.add(new Level(0,new int[]{0,1,2,3,4}, 5, "+1"));
-        levels.add(new Level(1,new int[]{0,2,4,6,8}, 10, "+2"));
-        levels.add(new Level(2,new int[]{1,3,2,4,3}, 5, "+2, -1"));
-        levels.add(new Level(3,new int[]{0,1,2,4,8}, 16, "2^n"));
-        levels.add(new Level(4,new int[]{0,3,6,9,12}, 15, "+3"));
-        levels.add(new Level(5,new int[]{0,1,2,3,0}, 1, "mod 4"));
-    }*/
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
