@@ -9,16 +9,17 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import java.util.ArrayList;
-import java.util.List;
 
 
 /**
- * Created by thomas on 26.05.15.
+ * The Adapter to show the series.
  */
 public class SeriesAdapter extends BaseAdapter {
     private LayoutInflater inflater;
     private Activity activity;
+    /** List of all levels of the stage. **/
     private ArrayList<Level> level;
+    /** actual level of the user. **/
     private int actualLevel;
 
     public SeriesAdapter(ArrayList<Level> level, int actualLevel, Activity activity) {
@@ -47,7 +48,7 @@ public class SeriesAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         View v = convertView;
         if (v == null)
-            v = inflater.inflate(R.layout.series_menu, null);
+            v = inflater.inflate(R.layout.level_item, null);
         ((TextView)v.findViewById(R.id.series_text)).setText(level.get(position).getSeries());
         if (level.get(position).getId() <= actualLevel) {
             v.setBackgroundResource(R.drawable.rounded_background);
@@ -57,12 +58,17 @@ public class SeriesAdapter extends BaseAdapter {
         return v;
     }
 
-   @Override
+    @Override
     public boolean isEnabled(int position) {
        if (level.get(position).getId() <= actualLevel)
            return true;
        return false;
-   }
+    }
+
+    /**
+     * Sets the actual level.
+     * @param actualLevel to set.
+     */
     public void setLevel(int actualLevel) {
         this.actualLevel = actualLevel;
     }

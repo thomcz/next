@@ -13,9 +13,13 @@ import android.widget.ListView;
 
 import java.util.ArrayList;
 
-
+/**
+ * The Menu to choose a level.
+ */
 public class LevelMenu extends ActionBarActivity {
+    /** The level of the stage. **/
     private ArrayList<Level> levels;
+    /** The users actuall level. **/
     private int actualLevel;
     private SeriesAdapter seriesAdapter;
     private ListView seriesListview;
@@ -24,7 +28,6 @@ public class LevelMenu extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_level_menu);
-        //int index = getIntent().getIntExtra("gay", 0);
         sharedPrefs = new SharedPrefs();
         levels = getIntent().getParcelableArrayListExtra("gay");
         actualLevel = getIntent().getIntExtra("levelInt", 0);
@@ -48,7 +51,6 @@ public class LevelMenu extends ActionBarActivity {
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == 0) {
             if (resultCode == Activity.RESULT_OK) {
-
                 actualLevel++;
                 Intent intent = new Intent();
                 intent.putExtra("levelInt", actualLevel);
@@ -56,27 +58,20 @@ public class LevelMenu extends ActionBarActivity {
                 seriesAdapter.setLevel(actualLevel);
                 seriesAdapter.notifyDataSetChanged();
                 sharedPrefs.saveLevel(this,actualLevel);
-
             }
         }
     }
 
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_level_menu, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
         }

@@ -14,22 +14,27 @@ import android.widget.ListView;
 
 import java.util.ArrayList;
 
-
-public class MainMenu extends ActionBarActivity {
+/**
+ * The Menu to choose a stage.
+ */
+public class StageMenu extends ActionBarActivity {
+    /** The users actual level. **/
     private int actualLevel;
     private LevelAdapter levelAdapter;
+    /** List of all levels. **/
     private ArrayList<Level> levels;
+    /** List of all stages. **/
+    private ArrayList<Stage> levelItems;
     private ListView levelList;
     private SharedPrefs sharedPrefs;
-    private ArrayList<LevelListItem> levelItems;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main_menu);
+        setContentView(R.layout.activity_stage_menu);
 
         sharedPrefs = new SharedPrefs();
         actualLevel = sharedPrefs.getLevel(getApplicationContext());
-        //actualLevel = 2;
         getLevel();
         levelItems = getStages();
         levelAdapter = new LevelAdapter(levelItems, actualLevel, this);
@@ -58,8 +63,8 @@ public class MainMenu extends ActionBarActivity {
             }
         }
     }
-    private ArrayList<LevelListItem> getStages() {
-        ArrayList<LevelListItem> level = new ArrayList<LevelListItem>();
+    private ArrayList<Stage> getStages() {
+        ArrayList<Stage> level = new ArrayList<Stage>();
 
         Resources resources = getResources();
         TypedArray name = resources.obtainTypedArray(R.array.name);
@@ -70,7 +75,7 @@ public class MainMenu extends ActionBarActivity {
 
         for (int i = 0; i < name.length(); i++) {
             ArrayList<Level> foo = new ArrayList<>(levels.subList(bottom.getInt(i, 0), limit.getInt(i,0)));
-            level.add(new LevelListItem(name.getString(i), size.getInt(i, 0), foo, image.getResourceId(i,0)));
+            level.add(new Stage(name.getString(i), size.getInt(i, 0), foo, image.getResourceId(i,0)));
         }
         name.recycle();
         size.recycle();
@@ -102,7 +107,7 @@ public class MainMenu extends ActionBarActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main_menu, menu);
+        getMenuInflater().inflate(R.menu.menu_stage_menu, menu);
         return true;
     }
 

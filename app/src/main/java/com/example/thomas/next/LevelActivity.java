@@ -13,12 +13,19 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
-
+/**
+ * The Activity that shows the level and takes the user input.
+ */
 public class LevelActivity extends ActionBarActivity {
+    /** The actual level. **/
     private Level actualLevel;
+    /** The level the user is actually. **/
     private int level;
+    /** This pointer. **/
     private LevelActivity activity;
+    /** The TextView that shows the series. **/
     private TextView series;
+    /** The EditText that takes the answer. **/
     private EditText answer;
 
     @Override
@@ -47,16 +54,12 @@ public class LevelActivity extends ActionBarActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
         if (id == R.id.action_description) {
             String msg = getResources().getString(R.string.dont_show_description);
             if (level > actualLevel.getId()) {
-                msg = actualLevel.getResultString();
+                msg = actualLevel.getDescription();
             }
             showDialog(msg, false);
             return true;
@@ -65,11 +68,14 @@ public class LevelActivity extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
-
+    /**
+     * Checks if the answer is correct and shows a dialog to notify the user.
+     * @param view the actual view
+     */
     public void sendAnswer(View view) {
         int a = Integer.valueOf(answer.getText().toString());
         if (a == actualLevel.getResult()) {
-            showDialog(actualLevel.getResultString(), true);
+            showDialog(actualLevel.getDescription(), true);
         }
         else {
             showDialog(getResources().getString(R.string.false_answer), false);

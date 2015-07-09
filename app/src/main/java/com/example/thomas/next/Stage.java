@@ -3,15 +3,17 @@ package com.example.thomas.next;
 import java.util.ArrayList;
 
 /**
- * Created by thomas on 16.05.15.
+ * Representation of a stage.
  */
-public class LevelListItem {
+public class Stage {
+    /** The name of the stage. */
     private String name;
+
     private int size;
     private ArrayList<Level> levels;
     private int imageRessource;
 
-    public LevelListItem(String name, int size, ArrayList<Level> levels, int imageRessource) {
+    public Stage(String name, int size, ArrayList<Level> levels, int imageRessource) {
         this.name = name;
         this.size = size;
         this.levels = levels;
