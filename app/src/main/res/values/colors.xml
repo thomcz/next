@@ -4,4 +4,7 @@
     <item name="background" type="color">#f1f8e9</item>
     <item name="enabledLevel" type="color">#9ccc65</item>
     <item name="disableLevel" type="color">#c5e1a5</item>
+    <item name="background_splash" type="color">#9ccc65</item>
+    <item name="logo_text_color" type="color">#DCEDC8</item>
+    <item name="menu_btn" type="color">#c5e1a5</item>
 </resources>

@@ -11,5 +11,7 @@
     <string name="false_answer">nope, try again</string>
     <string name="show_description">description</string>
     <string name="dont_show_description">You have to answer first correct before you can see the description!</string>
+    <string name="play_btn">play</string>
+    <string name="settings_btn">settings</string>
 
 </resources>
