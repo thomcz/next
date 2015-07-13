@@ -13,7 +13,11 @@
         </activity>
         <activity
             android:name=".StageMenu"
-            android:label="@string/title_activity_main_menu" >
+            android:label="@string/title_activity_main_menu">
+        </activity>
+        <activity
+            android:name=".SplashActivity"
+            android:label="@string/title_activity_main_menu">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
