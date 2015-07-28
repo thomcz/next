@@ -1,4 +1,4 @@
-package com.example.thomas.next;
+package com.example.thomas.next.activity;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -8,8 +8,12 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ListAdapter;
 import android.widget.ListView;
+
+import com.example.thomas.next.object.Level;
+import com.example.thomas.next.R;
+import com.example.thomas.next.adapter.SeriesAdapter;
+import com.example.thomas.next.util.SharedPrefs;
 
 import java.util.ArrayList;
 

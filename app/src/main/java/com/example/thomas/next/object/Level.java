@@ -1,4 +1,4 @@
-package com.example.thomas.next;
+package com.example.thomas.next.object;
 
 import android.os.Parcel;
 import android.os.Parcelable;

@@ -1,4 +1,4 @@
-package com.example.thomas.next;
+package com.example.thomas.next.object;
 
 import java.util.ArrayList;
 

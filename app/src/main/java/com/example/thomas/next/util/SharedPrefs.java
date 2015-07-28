@@ -1,4 +1,4 @@
-package com.example.thomas.next;
+package com.example.thomas.next.util;
 
 import android.app.Activity;
 import android.content.Context;

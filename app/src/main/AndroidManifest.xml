@@ -8,15 +8,15 @@
         android:logo="@drawable/ic_launcher"
         android:theme="@style/AppTheme" >
         <activity
-            android:name=".LevelActivity"
+            android:name=".activity.LevelActivity"
             android:label="@string/app_name" >
         </activity>
         <activity
-            android:name=".StageMenu"
+            android:name=".activity.StageMenu"
             android:label="@string/title_activity_main_menu" >
         </activity>
         <activity
-            android:name=".SplashActivity"
+            android:name=".activity.SplashActivity"
             android:label="@string/title_activity_main_menu" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -25,11 +25,11 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".LevelMenu"
+            android:name=".activity.LevelMenu"
             android:label="@string/title_activity_level_menu" >
         </activity>
         <activity
-            android:name=".MainMenu"
+            android:name=".activity.MainMenu"
             android:label="@string/title_activity_main_menu">
 
         </activity>

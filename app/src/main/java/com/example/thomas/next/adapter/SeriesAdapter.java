@@ -1,4 +1,4 @@
-package com.example.thomas.next;
+package com.example.thomas.next.adapter;
 
 import android.app.Activity;
 import android.content.Context;
@@ -7,6 +7,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
+
+import com.example.thomas.next.object.Level;
+import com.example.thomas.next.R;
 
 import java.util.ArrayList;
 
