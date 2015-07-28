@@ -73,8 +73,13 @@ public class LevelActivity extends ActionBarActivity {
      * @param view the actual view
      */
     public void sendAnswer(View view) {
-        int a = Integer.valueOf(answer.getText().toString());
-        if (a == actualLevel.getResult()) {
+        int result = 0;
+        try {
+            result = Integer.valueOf(answer.getText().toString());
+        } catch (NumberFormatException e) {
+
+        }
+        if (result == actualLevel.getResult()) {
             showDialog(actualLevel.getDescription(), true);
         }
         else {
