@@ -16,6 +16,8 @@ public class Level implements Parcelable {
     private int result;
     /** the description of the level. **/
     private String description;
+    /** the score of the level. **/
+    private int score;
 
     /**
      * Constructor of the level.
@@ -23,12 +25,14 @@ public class Level implements Parcelable {
      * @param series the series to complete
      * @param result the result of the level
      * @param description the description of the level
+     * @param score score of the level
      */
-    public Level(int id, String series, int result, String description) {
+    public Level(int id, String series, int result, String description, int score) {
         this.id = id;
         this.series = series;
         this.result = result;
         this.description = description;
+        this.score = score;
     }
 
     /**
@@ -40,6 +44,7 @@ public class Level implements Parcelable {
         series = in.readString();
         result = in.readInt();
         description = in.readString();
+        score = in.readInt();
     }
 
     /**
@@ -75,6 +80,14 @@ public class Level implements Parcelable {
     }
 
     /**
+     * Returns the score.
+     * @return the score
+     */
+    public int getScore() {
+        return score;
+    }
+
+    /**
      * Set the id.
      * @param id to set
      */
@@ -104,6 +117,12 @@ public class Level implements Parcelable {
         this.description = description;
     }
 
+    /**
+     * Set the score.
+     * @param score to set
+     */
+    public void setScore(int score) {this.score = score; }
+
     @Override
     public int describeContents() {
         return 0;
@@ -115,6 +134,7 @@ public class Level implements Parcelable {
         dest.writeString(series);
         dest.writeInt(result);
         dest.writeString(description);
+        dest.writeInt(score);
     }
 
     public static final Parcelable.Creator<Level> CREATOR = new Parcelable.Creator<Level>() {

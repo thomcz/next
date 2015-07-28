@@ -15,6 +15,7 @@ import android.widget.ListView;
 import com.example.thomas.next.object.Level;
 import com.example.thomas.next.adapter.LevelAdapter;
 import com.example.thomas.next.R;
+import com.example.thomas.next.util.AppUtil;
 import com.example.thomas.next.util.SharedPrefs;
 import com.example.thomas.next.object.Stage;
 
@@ -32,17 +33,15 @@ public class StageMenu extends ActionBarActivity {
     /** List of all stages. **/
     private ArrayList<Stage> levelItems;
     private ListView levelList;
-    private SharedPrefs sharedPrefs;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_stage_menu);
 
-        sharedPrefs = new SharedPrefs();
-        actualLevel = sharedPrefs.getLevel(getApplicationContext());
-        getLevel();
-        levelItems = getStages();
+       actualLevel = SharedPrefs.getLevel(getApplicationContext());
+        levels = AppUtil.getLevel(this);
+        levelItems = AppUtil.getStages(this, levels);
         levelAdapter = new LevelAdapter(levelItems, actualLevel, this);
         levelList = ((ListView)findViewById(R.id.level_listview));
         levelList.setAdapter(levelAdapter);
@@ -69,46 +68,9 @@ public class StageMenu extends ActionBarActivity {
             }
         }
     }
-    private ArrayList<Stage> getStages() {
-        ArrayList<Stage> level = new ArrayList<Stage>();
 
-        Resources resources = getResources();
-        TypedArray name = resources.obtainTypedArray(R.array.name);
-        TypedArray size = resources.obtainTypedArray(R.array.size);
-        TypedArray bottom = resources.obtainTypedArray(R.array.bottom);
-        TypedArray limit = resources.obtainTypedArray(R.array.limit);
-        TypedArray image = resources.obtainTypedArray(R.array.image);
 
-        for (int i = 0; i < name.length(); i++) {
-            ArrayList<Level> foo = new ArrayList<>(levels.subList(bottom.getInt(i, 0), limit.getInt(i,0)));
-            level.add(new Stage(name.getString(i), size.getInt(i, 0), foo, image.getResourceId(i,0)));
-        }
-        name.recycle();
-        size.recycle();
-        bottom.recycle();
-        limit.recycle();
-        image.recycle();
 
-        return level;
-    }
-
-    private void getLevel() {
-        levels = new ArrayList<Level>();
-        Resources resources = getResources();
-        TypedArray id = resources.obtainTypedArray(R.array.id);
-        TypedArray series = resources.obtainTypedArray(R.array.series);
-        TypedArray result = resources.obtainTypedArray(R.array.result);
-        TypedArray resultString = resources.obtainTypedArray(R.array.resultString);
-
-        for (int i = 0; i < id.length(); i++) {
-            String s = resultString.getString(i);
-            levels.add(new Level(id.getInt(i, 0), series.getString(i), result.getInt(i, 0), resultString.getString(i)));
-        }
-        id.recycle();
-        series.recycle();
-        result.recycle();
-        resultString.recycle();
-    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

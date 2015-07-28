@@ -140,4 +140,39 @@
         <item>*1 *2 *3 *4</item>
         <item>fibonacci</item>
     </string-array>
+
+    <integer-array name="score">
+        <item>50</item>
+        <item>50</item>
+        <item>50</item>
+        <item>50</item>
+        <item>50</item>
+        <item>70</item>
+        <item>70</item>
+        <item>70</item>
+        <item>70</item>
+        <item>70</item>
+
+        <item>90</item>
+        <item>90</item>
+        <item>90</item>
+        <item>90</item>
+        <item>90</item>
+        <item>110</item>
+        <item>110</item>
+        <item>110</item>
+        <item>110</item>
+        <item>110</item>
+
+        <item>130</item>
+        <item>130</item>
+        <item>130</item>
+        <item>130</item>
+        <item>130</item>
+        <item>150</item>
+        <item>150</item>
+        <item>150</item>
+        <item>150</item>
+        <item>150</item>
+    </integer-array>
 </resources>

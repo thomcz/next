@@ -49,7 +49,7 @@ public class MainMenu extends ActionBarActivity {
     }
 
     public void settings(View view) {
-        //TODO Settings page
-        Toast.makeText(getApplicationContext(), "Settings pressed", Toast.LENGTH_LONG).show();
+        /*Intent intent = new Intent(getApplicationContext(), SettingsActivity.class);
+        startActivity(intent);*/
     }
 }

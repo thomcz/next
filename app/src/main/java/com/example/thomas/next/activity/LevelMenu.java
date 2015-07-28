@@ -27,12 +27,10 @@ public class LevelMenu extends ActionBarActivity {
     private int actualLevel;
     private SeriesAdapter seriesAdapter;
     private ListView seriesListview;
-    private SharedPrefs sharedPrefs;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_level_menu);
-        sharedPrefs = new SharedPrefs();
         levels = getIntent().getParcelableArrayListExtra("gay");
         actualLevel = getIntent().getIntExtra("levelInt", 0);
         seriesAdapter = new SeriesAdapter(levels, actualLevel , this);
@@ -61,7 +59,7 @@ public class LevelMenu extends ActionBarActivity {
                 this.setResult(Activity.RESULT_OK, intent);
                 seriesAdapter.setLevel(actualLevel);
                 seriesAdapter.notifyDataSetChanged();
-                sharedPrefs.saveLevel(this,actualLevel);
+                SharedPrefs.saveLevel(this,actualLevel);
             }
         }
     }
