@@ -12,8 +12,7 @@ import android.widget.ListView;
 
 import com.example.thomas.next.object.Level;
 import com.example.thomas.next.R;
-import com.example.thomas.next.adapter.SeriesAdapter;
-import com.example.thomas.next.util.SharedPrefs;
+import com.example.thomas.next.adapter.LevelAdapter;
 
 import java.util.ArrayList;
 
@@ -24,26 +23,26 @@ public class LevelMenu extends ActionBarActivity {
     /** The level of the stage. **/
     private ArrayList<Level> levels;
     /** The users actuall level. **/
-    private int actualLevel;
-    private SeriesAdapter seriesAdapter;
+    //private int actualLevel;
+    private LevelAdapter levelAdapter;
     private ListView seriesListview;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_level_menu);
         levels = getIntent().getParcelableArrayListExtra("gay");
-        actualLevel = getIntent().getIntExtra("levelInt", 0);
-        seriesAdapter = new SeriesAdapter(levels, actualLevel , this);
+        //actualLevel = getIntent().getIntExtra("levelInt", 0);
+        levelAdapter = new LevelAdapter(levels, this);
 
         seriesListview = ((ListView)findViewById(R.id.series_listview));
-        seriesListview.setAdapter(seriesAdapter);
+        seriesListview.setAdapter(levelAdapter);
         seriesListview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent level = new Intent(getApplicationContext(), LevelActivity.class);
 
                 level.putExtra("level", levels.get(position));
-                level.putExtra("levelInt", actualLevel);
+                //level.putExtra("levelInt", actualLevel);
                 startActivityForResult(level, 0);
             }
         });
@@ -53,13 +52,13 @@ public class LevelMenu extends ActionBarActivity {
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == 0) {
             if (resultCode == Activity.RESULT_OK) {
-                actualLevel++;
+                //actualLevel++;
                 Intent intent = new Intent();
-                intent.putExtra("levelInt", actualLevel);
+                //intent.putExtra("levelInt", actualLevel);
                 this.setResult(Activity.RESULT_OK, intent);
-                seriesAdapter.setLevel(actualLevel);
-                seriesAdapter.notifyDataSetChanged();
-                SharedPrefs.saveLevel(this,actualLevel);
+                levelAdapter.setLevel();
+                levelAdapter.notifyDataSetChanged();
+                //SharedPrefs.saveLevel(this, actualLevel);
             }
         }
     }

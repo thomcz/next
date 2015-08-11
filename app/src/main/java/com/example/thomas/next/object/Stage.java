@@ -8,7 +8,7 @@ import java.util.ArrayList;
 public class Stage {
     /** The name of the stage. */
     private String name;
-
+    private boolean unlocked;
     private int size;
     private ArrayList<Level> levels;
     private int imageRessource;
@@ -27,6 +27,10 @@ public class Stage {
     public void setName(String name) {
         this.name = name;
     }
+
+    public boolean getUnlocked() { return unlocked; }
+
+    public void setUnlocked(boolean unlocked) { this.unlocked = unlocked; }
 
     public int getSize() {
         return size;

@@ -2,8 +2,6 @@ package com.example.thomas.next.activity;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.content.res.Resources;
-import android.content.res.TypedArray;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -12,11 +10,10 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
+import com.example.thomas.next.adapter.StageAdapter;
 import com.example.thomas.next.object.Level;
-import com.example.thomas.next.adapter.LevelAdapter;
 import com.example.thomas.next.R;
 import com.example.thomas.next.util.AppUtil;
-import com.example.thomas.next.util.SharedPrefs;
 import com.example.thomas.next.object.Stage;
 
 import java.util.ArrayList;
@@ -27,7 +24,7 @@ import java.util.ArrayList;
 public class StageMenu extends ActionBarActivity {
     /** The users actual level. **/
     private int actualLevel;
-    private LevelAdapter levelAdapter;
+    private StageAdapter stageAdapter;
     /** List of all levels. **/
     private ArrayList<Level> levels;
     /** List of all stages. **/
@@ -39,19 +36,19 @@ public class StageMenu extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_stage_menu);
 
-       actualLevel = SharedPrefs.getLevel(getApplicationContext());
         levels = AppUtil.getLevel(this);
         levelItems = AppUtil.getStages(this, levels);
-        levelAdapter = new LevelAdapter(levelItems, actualLevel, this);
+        actualLevel = AppUtil.getActualLevel();
+        stageAdapter = new StageAdapter(levelItems, actualLevel, this);
         levelList = ((ListView)findViewById(R.id.level_listview));
-        levelList.setAdapter(levelAdapter);
+        levelList.setAdapter(stageAdapter);
         levelList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent levelMenu = new Intent(getApplicationContext(), LevelMenu.class);
 
                 levelMenu.putParcelableArrayListExtra("gay", levelItems.get(position).getLevels());
-                levelMenu.putExtra("levelInt", actualLevel);
+                //levelMenu.putExtra("levelInt", actualLevel);
                 startActivityForResult(levelMenu,0);
             }
         });
@@ -62,9 +59,9 @@ public class StageMenu extends ActionBarActivity {
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == 0) {
             if (resultCode == Activity.RESULT_OK) {
-                actualLevel = data.getIntExtra("levelInt", actualLevel);
-                levelAdapter.setLevel(actualLevel);
-                levelAdapter.notifyDataSetChanged();
+                //actualLevel = data.getIntExtra("levelInt", actualLevel);
+                stageAdapter.setLevel();
+                stageAdapter.notifyDataSetChanged();
             }
         }
     }

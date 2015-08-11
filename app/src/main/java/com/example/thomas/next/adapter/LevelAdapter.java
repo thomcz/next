@@ -6,47 +6,41 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.thomas.next.object.Level;
 import com.example.thomas.next.R;
-import com.example.thomas.next.object.Stage;
+import com.example.thomas.next.util.AppUtil;
 
 import java.util.ArrayList;
 
+
 /**
- * The adapter to show the levels in listview.
+ * The Adapter to show the level.
  */
-public class LevelAdapter extends BaseAdapter{
+public class LevelAdapter extends BaseAdapter {
     private LayoutInflater inflater;
     private Activity activity;
-    /** The list of levelListItems **/
-    private ArrayList<Stage> levels;
-    /** The level the user is actually. **/
+    /** List of all levels of the stage. **/
+    private ArrayList<Level> level;
+    /** actual level of the user. **/
     private int actualLevel;
-    private View v;
 
-    /**
-     * The Constructor of the LevelAdapter.
-     * @param levels the LevelListItems
-     * @param actualLevel the level the user is actually
-     * @param activity
-     */
-    public LevelAdapter(ArrayList<Stage> levels, int actualLevel, Activity activity) {
+    public LevelAdapter(ArrayList<Level> level, Activity activity) {
+        this.level = level;
+        this.actualLevel = AppUtil.getActualLevel();
         this.activity = activity;
-        this.actualLevel = actualLevel;
         inflater = (LayoutInflater)this.activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        this.levels = levels;
-    }
 
+    }
     @Override
     public int getCount() {
-        return levels.size();
+        return level.size();
     }
 
     @Override
     public Object getItem(int position) {
-        return levels.get(position);
+        return level.get(position);
     }
 
     @Override
@@ -56,35 +50,29 @@ public class LevelAdapter extends BaseAdapter{
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        v = convertView;
+        View v = convertView;
         if (v == null)
-            v = inflater.inflate(R.layout.stage_item, null);
-        ((TextView)v.findViewById(R.id.levelGroupName)).setText(levels.get(position).getName());
-        ((TextView)v.findViewById(R.id.levelGroupSize)).setText(String.valueOf(levels.get(position).getSize()));
-        ((ImageView)v.findViewById(R.id.levelImage)).setImageResource(levels.get(position).getImageRessource());
-
-        if (position < levels.size() % 10 && actualLevel >= position*10) {
+            v = inflater.inflate(R.layout.level_item, null);
+        ((TextView)v.findViewById(R.id.series_text)).setText(level.get(position).getSeries());
+        if (level.get(position).getId() <= actualLevel) {
             v.setBackgroundResource(R.drawable.rounded_background);
+        } else {
+            v.setBackgroundResource(R.drawable.rounded_background_gray);
         }
         return v;
     }
+
     @Override
-    public boolean isEnabled(int position){
-        if (position < levels.size() % 10 && actualLevel >= position*10) {
-            return true;
-        }
-        return false;
-    }
-    @Override
-    public boolean areAllItemsEnabled(){
-        return false;
+    public boolean isEnabled(int position) {
+       if (level.get(position).getId() <= actualLevel)
+           return true;
+       return false;
     }
 
     /**
      * Sets the actual level of the user.
-     * @param actualLevel the level of the user.
      */
-    public void setLevel(int actualLevel) {
-        this.actualLevel = actualLevel;
+    public void setLevel() {
+        this.actualLevel = AppUtil.getActualLevel();
     }
 }

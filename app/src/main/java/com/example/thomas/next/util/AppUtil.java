@@ -14,6 +14,7 @@ import java.util.ArrayList;
  * Created by Thomas on 28.07.2015.
  */
 public class AppUtil {
+    private static int actualLevel = 0;
 
     public static ArrayList<Stage> getStages(Context context, ArrayList<Level> levels) {
         ArrayList<Stage> level = new ArrayList<Stage>();
@@ -47,9 +48,12 @@ public class AppUtil {
         TypedArray resultString = resources.obtainTypedArray(R.array.resultString);
         TypedArray score = resources.obtainTypedArray(R.array.score);
 
+        ArrayList<Integer> actualScore = SharedPrefs.getScore(context);
+        actualLevel = actualScore.size();
+
         for (int i = 0; i < id.length(); i++) {
-            String s = resultString.getString(i);
-            levels.add(new Level(id.getInt(i, 0), series.getString(i), result.getInt(i, 0), resultString.getString(i), score.getInt(i, 0)));
+            //String s = resultString.getString(i);
+            levels.add(new Level(id.getInt(i, 0), series.getString(i), result.getInt(i, 0), resultString.getString(i), score.getInt(i, 0), actualScore.size() - 1 > i ? actualScore.get(i) : 0));
         }
         id.recycle();
         series.recycle();
@@ -57,5 +61,12 @@ public class AppUtil {
         resultString.recycle();
 
         return levels;
+    }
+
+    public static int getActualLevel() {
+        return actualLevel;
+    }
+    public static void setActualLevel(Context context) {
+        actualLevel = SharedPrefs.getScore(context).size();
     }
 }

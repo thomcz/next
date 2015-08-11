@@ -10,6 +10,8 @@ import android.os.Parcelable;
 public class Level implements Parcelable {
     /** the id of the level. **/
     private int id;
+    /** shows if the level is unlocked by the user. */
+    private boolean unlocked;
     /** the series to complete. **/
     private String series;
     /** the result of this level. **/
@@ -18,6 +20,8 @@ public class Level implements Parcelable {
     private String description;
     /** the score of the level. **/
     private int score;
+    /** the extra score of the level. **/
+    private int actualScore;
 
     /**
      * Constructor of the level.
@@ -27,12 +31,14 @@ public class Level implements Parcelable {
      * @param description the description of the level
      * @param score score of the level
      */
-    public Level(int id, String series, int result, String description, int score) {
+    public Level(int id, String series, int result, String description, int score, int actualScore) {
         this.id = id;
         this.series = series;
         this.result = result;
         this.description = description;
         this.score = score;
+        this.actualScore = actualScore;
+
     }
 
     /**
@@ -41,10 +47,12 @@ public class Level implements Parcelable {
      */
     private Level(Parcel in) {
         id = in.readInt();
+        unlocked = (boolean) in.readValue(null);
         series = in.readString();
         result = in.readInt();
         description = in.readString();
         score = in.readInt();
+        actualScore = in.readInt();
     }
 
     /**
@@ -53,6 +61,14 @@ public class Level implements Parcelable {
      */
     public int getId() {
         return id;
+    }
+
+    /**
+     * Returns if the level is unlocked.
+     * @return true if it is unlocked, false otherwise
+     */
+    public boolean getUnlocked() {
+        return unlocked;
     }
 
     /**
@@ -88,10 +104,24 @@ public class Level implements Parcelable {
     }
 
     /**
+     * Returns the extra score.
+     * @return the extra score
+     */
+    public int getActualScore() {
+        return actualScore;
+    }
+
+    /**
      * Set the id.
      * @param id to set
      */
     public void setId(int id) {this.id = id; }
+
+    /**
+     * Set if the level is unlocked.
+     * @param unlocked true if the level is unlocked, false otherwise
+     */
+    public void setUnlocked(boolean unlocked) {this.unlocked = unlocked; }
 
     /**
      * Set the series.
@@ -123,6 +153,12 @@ public class Level implements Parcelable {
      */
     public void setScore(int score) {this.score = score; }
 
+    /**
+     * Set the actual score.
+     * @param actualScore to set
+     */
+    public void setActualScore(int actualScore) {this.actualScore = actualScore; }
+
     @Override
     public int describeContents() {
         return 0;
@@ -131,10 +167,12 @@ public class Level implements Parcelable {
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeInt(id);
+        dest.writeValue(unlocked);
         dest.writeString(series);
         dest.writeInt(result);
         dest.writeString(description);
         dest.writeInt(score);
+        dest.writeInt(actualScore);
     }
 
     public static final Parcelable.Creator<Level> CREATOR = new Parcelable.Creator<Level>() {

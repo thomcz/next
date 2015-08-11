@@ -14,6 +14,8 @@ import android.widget.TextView;
 
 import com.example.thomas.next.object.Level;
 import com.example.thomas.next.R;
+import com.example.thomas.next.util.AppUtil;
+import com.example.thomas.next.util.SharedPrefs;
 
 /**
  * The Activity that shows the level and takes the user input.
@@ -36,7 +38,7 @@ public class LevelActivity extends ActionBarActivity {
         setContentView(R.layout.activity_level);
         activity = this;
         actualLevel = getIntent().getParcelableExtra("level");
-        level = getIntent().getIntExtra("levelInt", 0);
+        level = AppUtil.getActualLevel();
         series = (TextView) findViewById(R.id.series);
         answer = (EditText) findViewById(R.id.answer);
 
@@ -98,8 +100,10 @@ public class LevelActivity extends ActionBarActivity {
             public void onClick(DialogInterface dialog, int which) {
                 dialog.dismiss();
                 if (right) {
-                    if (level == actualLevel.getId())
+                    if (level == actualLevel.getId()) {
+                        SharedPrefs.addScore(getApplicationContext(), actualLevel.getScore());
                         setResult(Activity.RESULT_OK);
+                    }
                     activity.finish();
                 }
             }
