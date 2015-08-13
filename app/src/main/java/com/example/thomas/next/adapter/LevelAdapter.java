@@ -54,6 +54,7 @@ public class LevelAdapter extends BaseAdapter {
         if (v == null)
             v = inflater.inflate(R.layout.level_item, null);
         ((TextView)v.findViewById(R.id.series_text)).setText(level.get(position).getSeries());
+        ((TextView)v.findViewById(R.id.level_score)).setText(String.valueOf(level.get(position).getScore()));
         if (level.get(position).getId() <= actualLevel) {
             v.setBackgroundResource(R.drawable.rounded_background);
         } else {
