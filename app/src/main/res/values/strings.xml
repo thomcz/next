@@ -5,6 +5,7 @@
     <string name="hit">Hits: </string>
     <string name="lose">lose: </string>
     <string name="action_settings">Settings</string>
+    <string name="action_highscore">Highscore</string>
     <string name="title_activity_main_menu">MainMenu</string>
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_level_menu">LevelMenu</string>

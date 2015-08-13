@@ -76,7 +76,8 @@ public class SharedPrefs {
 
         scoreList.add(score);
         saveScore(context, scoreList);
-        AppUtil.setActualLevel(context);
+        AppUtil.updateActualLevel(context);
+        AppUtil.updateHighscore(context);
     }
 
     public static ArrayList<Integer> getScore(Context context) {

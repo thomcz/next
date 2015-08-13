@@ -9,12 +9,14 @@ import com.example.thomas.next.object.Level;
 import com.example.thomas.next.object.Stage;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Thomas on 28.07.2015.
  */
 public class AppUtil {
     private static int actualLevel = 0;
+    private static int highscore = 0;
 
     public static ArrayList<Stage> getStages(Context context, ArrayList<Level> levels) {
         ArrayList<Stage> level = new ArrayList<Stage>();
@@ -52,8 +54,9 @@ public class AppUtil {
         actualLevel = actualScore.size();
 
         for (int i = 0; i < id.length(); i++) {
-            //String s = resultString.getString(i);
-            levels.add(new Level(id.getInt(i, 0), series.getString(i), result.getInt(i, 0), resultString.getString(i), score.getInt(i, 0), actualScore.size() - 1 > i ? actualScore.get(i) : 0));
+            int levelScore = actualScore.size() - 1 > i ? actualScore.get(i) : 0;
+            levels.add(new Level(id.getInt(i, 0), series.getString(i), result.getInt(i, 0), resultString.getString(i), score.getInt(i, 0), levelScore));
+            highscore += levelScore;
         }
         id.recycle();
         series.recycle();
@@ -66,7 +69,13 @@ public class AppUtil {
     public static int getActualLevel() {
         return actualLevel;
     }
-    public static void setActualLevel(Context context) {
+    public static void updateActualLevel(Context context) {
         actualLevel = SharedPrefs.getScore(context).size();
+    }
+    public static int getHighscore() { return highscore; }
+
+    public static void updateHighscore(Context context) {
+        List<Integer> score  = SharedPrefs.getScore(context);
+        highscore += score.get(score.size() - 1);
     }
 }

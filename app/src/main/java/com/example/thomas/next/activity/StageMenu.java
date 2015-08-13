@@ -1,6 +1,8 @@
 package com.example.thomas.next.activity;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -84,7 +86,17 @@ public class StageMenu extends ActionBarActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.action_highscore) {
+            AlertDialog ad = new AlertDialog.Builder(this).create();
+            ad.setCancelable(false); // This blocks the 'BACK' button
+            ad.setMessage("Your Highscore: " + AppUtil.getHighscore());
+            ad.setButton("OK", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.dismiss();
+                }
+            });
+            ad.show();
             return true;
         }
 
