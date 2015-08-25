@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.thomas.next.R;
+import com.example.thomas.next.object.Level;
 import com.example.thomas.next.object.Stage;
 import com.example.thomas.next.util.AppUtil;
 
@@ -22,32 +23,32 @@ public class StageAdapter extends BaseAdapter{
     private LayoutInflater inflater;
     private Activity activity;
     /** The list of levelListItems **/
-    private ArrayList<Stage> levels;
+    private ArrayList<Stage> stages;
     /** The level the user is actually. **/
     private int actualLevel;
     private View v;
 
     /**
      * The Constructor of the StageAdapter.
-     * @param levels the LevelListItems
+     * @param stages the StageListItems
      * @param actualLevel the level the user is actually
      * @param activity
      */
-    public StageAdapter(ArrayList<Stage> levels, int actualLevel, Activity activity) {
+    public StageAdapter(ArrayList<Stage> stages, int actualLevel, Activity activity) {
         this.activity = activity;
         this.actualLevel = actualLevel;
         inflater = (LayoutInflater)this.activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        this.levels = levels;
+        this.stages = stages;
     }
 
     @Override
     public int getCount() {
-        return levels.size();
+        return stages.size();
     }
 
     @Override
     public Object getItem(int position) {
-        return levels.get(position);
+        return stages.get(position);
     }
 
     @Override
@@ -60,18 +61,22 @@ public class StageAdapter extends BaseAdapter{
         v = convertView;
         if (v == null)
             v = inflater.inflate(R.layout.stage_item, null);
-        ((TextView)v.findViewById(R.id.levelGroupName)).setText(levels.get(position).getName());
-        ((TextView)v.findViewById(R.id.levelGroupSize)).setText(String.valueOf(levels.get(position).getSize()));
-        ((ImageView)v.findViewById(R.id.levelImage)).setImageResource(levels.get(position).getImageRessource());
+        ((TextView)v.findViewById(R.id.stage_name)).setText(stages.get(position).getName());
+        ((TextView)v.findViewById(R.id.stage_score)).setText(String.valueOf(getStageScore(stages.get(position))));
 
-        if (position < levels.size() % 10 && actualLevel >= position*10) {
+        String actualStageScore = activity.getResources().getString(R.string.actual_stage_score) +
+                String.valueOf(getActualStageScore(stages.get(position), position));
+        ((TextView)v.findViewById(R.id.actual_stage_score)).setText(actualStageScore);
+        ((ImageView)v.findViewById(R.id.stage_Image)).setImageResource(stages.get(position).getImageRessource());
+
+        if (position < stages.size() % 10 && actualLevel >= position * 10) {
             v.setBackgroundResource(R.drawable.rounded_background);
         }
         return v;
     }
     @Override
     public boolean isEnabled(int position){
-        if (position < levels.size() % 10 && actualLevel >= position*10) {
+        if (position < stages.size() % 10 && actualLevel >= position * 10) {
             return true;
         }
         return false;
@@ -86,5 +91,22 @@ public class StageAdapter extends BaseAdapter{
      */
     public void setLevel() {
         this.actualLevel = AppUtil.getActualLevel();
+    }
+
+    private int getStageScore(Stage stage) {
+        int score = 0;
+        for (Level level : stage.getLevels()) {
+            score += level.getScore();
+        }
+        return score;
+    }
+    private int getActualStageScore(Stage stage, int position) {
+        int score = 0;
+        int index =  actualLevel - (position * 10);
+        for (int i = 0; i < stage.getLevels().size() && index > 0; i++) {
+            score += stage.getLevels().get(i).getScore();
+            index--;
+        }
+        return score;
     }
 }

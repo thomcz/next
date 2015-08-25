@@ -19,7 +19,7 @@
         android:layout_width="wrap_content"
         android:layout_height="fill_parent"
         android:id="@+id/series_text"
-        android:text=" ? ? ? ? ? "
+        android:text="@string/series_unknown"
         android:textSize="30dp"
         android:gravity="center"
         android:lines="1"

@@ -6,35 +6,32 @@
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="fill_parent"
-        android:id="@+id/levelImage"
+        android:id="@+id/stage_Image"
         android:layout_margin="5dp"/>
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="fill_parent"
         android:orientation="vertical"
-        android:layout_marginTop="5dp">
+        android:layout_marginTop="5dp"
+        android:layout_weight="1">
         <TextView
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/levelGroupName"
+            android:id="@+id/stage_name"
             android:textStyle="bold"
             android:textSize="18dp"/>
         <TextView
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/levelGroupSize"/>
+            android:id="@+id/actual_stage_score"/>
     </LinearLayout>
-<LinearLayout
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent">
     <TextView
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:layout_gravity="right"
-        android:id="@+id/levelPoints"
-        android:text="points: 123"/>
-    </LinearLayout>
-
-
-
+        android:id="@+id/stage_score"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/score"
+        android:gravity="center_horizontal|center_vertical"
+        android:textColor="#ecf4e2"
+        android:textSize="13dp"
+        android:layout_margin="2dp"/>
 </LinearLayout>

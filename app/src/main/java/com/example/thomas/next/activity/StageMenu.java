@@ -87,16 +87,8 @@ public class StageMenu extends ActionBarActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_highscore) {
-            AlertDialog ad = new AlertDialog.Builder(this).create();
-            ad.setCancelable(false); // This blocks the 'BACK' button
-            ad.setMessage("Your Highscore: " + AppUtil.getHighscore());
-            ad.setButton("OK", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    dialog.dismiss();
-                }
-            });
-            ad.show();
+            String message = "Your Highscore: " + AppUtil.getHighscore();
+            AppUtil.showDialog(message, this);
             return true;
         }
 

@@ -73,7 +73,7 @@ public class LevelAdapter extends BaseAdapter {
             ((TextView)v.findViewById(R.id.series_text)).setText(level.get(position).getSeries());
         } else {
             v.setBackgroundResource(R.drawable.rounded_background_gray);
-            //((TextView)v.findViewById(R.id.series_text)).setText("? ? ? ? ?");
+            ((TextView)v.findViewById(R.id.series_text)).setText(activity.getResources().getString(R.string.series_unknown));
         }
 
         return v;
