@@ -1,8 +1,12 @@
 package com.example.thomas.next.util;
 
+import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
+import android.text.Html;
 
 import com.example.thomas.next.R;
 import com.example.thomas.next.object.Level;
@@ -77,5 +81,23 @@ public class AppUtil {
     public static void updateHighscore(Context context) {
         List<Integer> score  = SharedPrefs.getScore(context);
         highscore += score.get(score.size() - 1);
+    }
+
+    public static void showDialog(String msg, Context context) {
+        DialogInterface.OnClickListener onClickListener = new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                dialogInterface.dismiss();
+            }
+        };
+        showDialog(msg, context, onClickListener);
+    }
+
+    public static void showDialog(String msg, Context context, DialogInterface.OnClickListener onClickListener) {
+        AlertDialog ad = new AlertDialog.Builder(context).create();
+        ad.setCancelable(false); // This blocks the 'BACK' button
+        ad.setMessage(Html.fromHtml(msg));
+        ad.setButton("OK", onClickListener);
+        ad.show();
     }
 }

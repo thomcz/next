@@ -1,16 +1,21 @@
 package com.example.thomas.next.adapter;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.example.thomas.next.object.Level;
 import com.example.thomas.next.R;
 import com.example.thomas.next.util.AppUtil;
+import com.example.thomas.next.util.SharedPrefs;
 
 import java.util.ArrayList;
 
@@ -49,17 +54,28 @@ public class LevelAdapter extends BaseAdapter {
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, View convertView, ViewGroup parent) {
         View v = convertView;
         if (v == null)
             v = inflater.inflate(R.layout.level_item, null);
-        ((TextView)v.findViewById(R.id.series_text)).setText(level.get(position).getSeries());
+        //((TextView)v.findViewById(R.id.series_text)).setText(level.get(position).getSeries());
         ((TextView)v.findViewById(R.id.level_score)).setText(String.valueOf(level.get(position).getScore()));
+        ((ImageButton)v.findViewById(R.id.level_description_button)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String message = level.get(position).getId() < actualLevel ? level.get(position).getDescription() :
+                        activity.getResources().getString(R.string.dont_show_description);
+                AppUtil.showDialog(message, activity);
+            }
+        });
         if (level.get(position).getId() <= actualLevel) {
             v.setBackgroundResource(R.drawable.rounded_background);
+            ((TextView)v.findViewById(R.id.series_text)).setText(level.get(position).getSeries());
         } else {
             v.setBackgroundResource(R.drawable.rounded_background_gray);
+            //((TextView)v.findViewById(R.id.series_text)).setText("? ? ? ? ?");
         }
+
         return v;
     }
 
@@ -76,4 +92,5 @@ public class LevelAdapter extends BaseAdapter {
     public void setLevel() {
         this.actualLevel = AppUtil.getActualLevel();
     }
+
 }

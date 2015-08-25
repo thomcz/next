@@ -65,7 +65,7 @@ public class LevelActivity extends ActionBarActivity {
             if (level > actualLevel.getId()) {
                 msg = actualLevel.getDescription();
             }
-            showDialog(msg, false);
+            AppUtil.showDialog(msg, this);
             return true;
         }
 
@@ -87,15 +87,12 @@ public class LevelActivity extends ActionBarActivity {
             showDialog(actualLevel.getDescription(), true);
         }
         else {
-            showDialog(getResources().getString(R.string.false_answer), false);
+            AppUtil.showDialog(getResources().getString(R.string.false_answer), this);
         }
     }
 
     private void showDialog(String msg, final boolean right) {
-        AlertDialog ad = new AlertDialog.Builder(this).create();
-        ad.setCancelable(false); // This blocks the 'BACK' button
-        ad.setMessage(Html.fromHtml(msg));
-        ad.setButton("OK", new DialogInterface.OnClickListener() {
+        DialogInterface.OnClickListener onClickListener = new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 dialog.dismiss();
@@ -107,7 +104,8 @@ public class LevelActivity extends ActionBarActivity {
                     activity.finish();
                 }
             }
-        });
-        ad.show();
+        };
+        AppUtil.showDialog(msg, this, onClickListener);
+
     }
 }
