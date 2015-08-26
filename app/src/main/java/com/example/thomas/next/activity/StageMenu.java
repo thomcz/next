@@ -1,8 +1,6 @@
 package com.example.thomas.next.activity;
 
 import android.app.Activity;
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -54,7 +52,6 @@ public class StageMenu extends ActionBarActivity {
                 startActivityForResult(levelMenu,0);
             }
         });
-
     }
 
     @Override
@@ -67,9 +64,6 @@ public class StageMenu extends ActionBarActivity {
             }
         }
     }
-
-
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -94,5 +88,4 @@ public class StageMenu extends ActionBarActivity {
 
         return super.onOptionsItemSelected(item);
     }
-
 }

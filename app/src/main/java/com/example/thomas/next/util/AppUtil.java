@@ -1,6 +1,5 @@
 package com.example.thomas.next.util;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -58,7 +57,7 @@ public class AppUtil {
         actualLevel = actualScore.size();
 
         for (int i = 0; i < id.length(); i++) {
-            int levelScore = actualScore.size() - 1 > i ? actualScore.get(i) : 0;
+            int levelScore = actualScore.size() > i ? actualScore.get(i) : 0;
             levels.add(new Level(id.getInt(i, 0), series.getString(i), result.getInt(i, 0), resultString.getString(i), score.getInt(i, 0), levelScore));
             highscore += levelScore;
         }

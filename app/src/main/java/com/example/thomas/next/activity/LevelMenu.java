@@ -65,7 +65,7 @@ public class LevelMenu extends ActionBarActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_level_menu, menu);
+        //getMenuInflater().inflate(R.menu.menu_level_menu, menu);
         return true;
     }
 
