@@ -1,11 +1,9 @@
 package com.example.thomas.next.activity;
 
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.content.DialogInterface;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.text.Html;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -20,7 +18,7 @@ import com.example.thomas.next.util.SharedPrefs;
 /**
  * The Activity that shows the level and takes the user input.
  */
-public class LevelActivity extends ActionBarActivity {
+public class LevelActivity extends AppCompatActivity {
     /** The actual level. **/
     private Level actualLevel;
     /** The level the user is actually. **/
@@ -32,20 +30,19 @@ public class LevelActivity extends ActionBarActivity {
     /** The EditText that takes the answer. **/
     private EditText answer;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_level);
         activity = this;
-        actualLevel = getIntent().getParcelableExtra("level");
+        actualLevel = getIntent().getParcelableExtra(LevelMenu.ACTUAL_LEVEL);
         level = AppUtil.getActualLevel();
         series = (TextView) findViewById(R.id.series);
         answer = (EditText) findViewById(R.id.answer);
 
         series.setText(actualLevel.getSeries());
-
-        //setLevel();
-
     }
 
 
@@ -84,28 +81,25 @@ public class LevelActivity extends ActionBarActivity {
 
         }
         if (result == actualLevel.getResult()) {
-            showDialog(actualLevel.getDescription(), true);
+            showDialog(actualLevel.getDescription());
         }
         else {
             AppUtil.showDialog(getResources().getString(R.string.false_answer), this);
         }
     }
 
-    private void showDialog(String msg, final boolean right) {
+    private void showDialog(String msg) {
         DialogInterface.OnClickListener onClickListener = new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 dialog.dismiss();
-                if (right) {
-                    if (level == actualLevel.getId()) {
-                        SharedPrefs.addScore(getApplicationContext(), actualLevel.getScore());
-                        setResult(Activity.RESULT_OK);
-                    }
-                    activity.finish();
+                if (level == actualLevel.getId()) {
+                    SharedPrefs.addScore(getApplicationContext(), actualLevel.getScore());
+                    setResult(Activity.RESULT_OK);
                 }
+                activity.finish();
             }
         };
         AppUtil.showDialog(msg, this, onClickListener);
-
     }
 }

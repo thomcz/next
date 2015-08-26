@@ -15,6 +15,7 @@
     <string name="play_btn">play</string>
     <string name="settings_btn">settings</string>
     <string name="series_unknown"> \? ? ? ? ? </string>
-    <string name="actual_stage_score">Actual Stage Score: </string>
+    <string name="actual_stage_score">Actual Stage Score:&#160;</string>
+    <string name="your_highscore">Your Score:&#160;</string>
 
 </resources>

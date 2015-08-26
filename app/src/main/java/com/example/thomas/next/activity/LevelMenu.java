@@ -2,8 +2,8 @@ package com.example.thomas.next.activity;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -19,19 +19,19 @@ import java.util.ArrayList;
 /**
  * The Menu to choose a level.
  */
-public class LevelMenu extends ActionBarActivity {
+public class LevelMenu extends AppCompatActivity {
     /** The level of the stage. **/
     private ArrayList<Level> levels;
-    /** The users actuall level. **/
-    //private int actualLevel;
     private LevelAdapter levelAdapter;
     private ListView seriesListview;
+
+    public final static String ACTUAL_LEVEL = "actual_level";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_level_menu);
-        levels = getIntent().getParcelableArrayListExtra("gay");
-        //actualLevel = getIntent().getIntExtra("levelInt", 0);
+        levels = getIntent().getParcelableArrayListExtra(StageMenu.STAGE_LEVELS);
         levelAdapter = new LevelAdapter(levels, this);
 
         seriesListview = ((ListView)findViewById(R.id.series_listview));
@@ -40,9 +40,7 @@ public class LevelMenu extends ActionBarActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent level = new Intent(getApplicationContext(), LevelActivity.class);
-
-                level.putExtra("level", levels.get(position));
-                //level.putExtra("levelInt", actualLevel);
+                level.putExtra(ACTUAL_LEVEL, levels.get(position));
                 startActivityForResult(level, 0);
             }
         });
@@ -52,31 +50,25 @@ public class LevelMenu extends ActionBarActivity {
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == 0) {
             if (resultCode == Activity.RESULT_OK) {
-                //actualLevel++;
                 Intent intent = new Intent();
-                //intent.putExtra("levelInt", actualLevel);
                 this.setResult(Activity.RESULT_OK, intent);
                 levelAdapter.setLevel();
                 levelAdapter.notifyDataSetChanged();
-                //SharedPrefs.saveLevel(this, actualLevel);
             }
         }
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        //getMenuInflater().inflate(R.menu.menu_level_menu, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
-
         if (id == R.id.action_settings) {
             return true;
         }
-
         return super.onOptionsItemSelected(item);
     }
 }

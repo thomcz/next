@@ -2,8 +2,8 @@ package com.example.thomas.next.activity;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -21,7 +21,7 @@ import java.util.ArrayList;
 /**
  * The Menu to choose a stage.
  */
-public class StageMenu extends ActionBarActivity {
+public class StageMenu extends AppCompatActivity {
     /** The users actual level. **/
     private int actualLevel;
     private StageAdapter stageAdapter;
@@ -30,6 +30,8 @@ public class StageMenu extends ActionBarActivity {
     /** List of all stages. **/
     private ArrayList<Stage> levelItems;
     private ListView levelList;
+
+    public final static String STAGE_LEVELS = "stage_levels";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,10 +48,8 @@ public class StageMenu extends ActionBarActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent levelMenu = new Intent(getApplicationContext(), LevelMenu.class);
-
-                levelMenu.putParcelableArrayListExtra("gay", levelItems.get(position).getLevels());
-                //levelMenu.putExtra("levelInt", actualLevel);
-                startActivityForResult(levelMenu,0);
+                levelMenu.putParcelableArrayListExtra(STAGE_LEVELS, levelItems.get(position).getLevels());
+                startActivityForResult(levelMenu, 0);
             }
         });
     }
@@ -58,7 +58,6 @@ public class StageMenu extends ActionBarActivity {
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == 0) {
             if (resultCode == Activity.RESULT_OK) {
-                //actualLevel = data.getIntExtra("levelInt", actualLevel);
                 stageAdapter.setLevel();
                 stageAdapter.notifyDataSetChanged();
             }
@@ -67,21 +66,16 @@ public class StageMenu extends ActionBarActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_stage_menu, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
         if (id == R.id.action_highscore) {
-            String message = "Your Highscore: " + AppUtil.getHighscore();
+            String message = getResources().getString(R.string.your_highscore) + AppUtil.getHighscore();
             AppUtil.showDialog(message, this);
             return true;
         }
