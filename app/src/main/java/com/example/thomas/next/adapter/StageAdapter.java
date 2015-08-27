@@ -6,6 +6,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -57,16 +59,25 @@ public class StageAdapter extends BaseAdapter{
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, View convertView, ViewGroup parent) {
         v = convertView;
         if (v == null)
             v = inflater.inflate(R.layout.stage_item, null);
         ((TextView)v.findViewById(R.id.stage_name)).setText(stages.get(position).getName());
-        ((TextView)v.findViewById(R.id.stage_score)).setText(String.valueOf(getStageScore(stages.get(position))));
 
-        String actualStageScore = activity.getResources().getString(R.string.actual_stage_score) +
-                String.valueOf(getActualStageScore(stages.get(position), position));
-        ((TextView)v.findViewById(R.id.actual_stage_score)).setText(actualStageScore);
+        final String actualStageScore = String.valueOf(getActualStageScore(stages.get(position), position));
+        ((TextView)v.findViewById(R.id.actual_stage_score)).setText(activity.getResources().getString(R.string.actual_stage_score) + actualStageScore);
+
+        final String stageScore = String.valueOf(getStageScore(stages.get(position)));
+        ((TextView)v.findViewById(R.id.stage_score)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String message = stages.get(position).getName() + ": " + "<b>" + actualStageScore + " / " + stageScore +"</b>";
+                AppUtil.showDialog(message, activity);
+            }
+        });
+        ((TextView)v.findViewById(R.id.stage_score)).setText(stageScore);
+
         ((ImageView)v.findViewById(R.id.stage_Image)).setImageResource(stages.get(position).getImageRessource());
 
         if (position < stages.size() % 10 && actualLevel >= position * 10) {

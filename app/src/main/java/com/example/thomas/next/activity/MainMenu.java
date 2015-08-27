@@ -6,8 +6,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 import com.example.thomas.next.R;
+import com.example.thomas.next.util.AppUtil;
 
 
 public class MainMenu extends AppCompatActivity {
@@ -42,6 +44,7 @@ public class MainMenu extends AppCompatActivity {
     }
 
     public void settings(View view) {
+        AppUtil.showDialog("coming soon!", this);
         /*Intent intent = new Intent(getApplicationContext(), SettingsActivity.class);
         startActivity(intent);*/
     }

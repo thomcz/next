@@ -2,11 +2,11 @@
 <resources>
 
     <string-array name="name">
-        <item>Stage 1</item>
-        <item>Stage 2</item>
-        <item>Stage 3</item>
-        <item>Stage 4</item>
-        <item>Stage 5</item>
+        <item>Bernoulli</item>
+        <item>Euler</item>
+        <item>Riemann</item>
+        <item>Cauchy</item>
+        <item>Taylor</item>
     </string-array>
 
     <integer-array name="bottom">

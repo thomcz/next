@@ -75,7 +75,7 @@ public class StageMenu extends AppCompatActivity {
         int id = item.getItemId();
 
         if (id == R.id.action_highscore) {
-            String message = getResources().getString(R.string.your_highscore) + AppUtil.getHighscore();
+            String message = getResources().getString(R.string.your_highscore) + "<b>" + AppUtil.getHighscore() + "</b>";
             AppUtil.showDialog(message, this);
             return true;
         }

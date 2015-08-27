@@ -2,7 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="horizontal" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/rounded_background_gray">
+    android:background="@drawable/rounded_background_gray"
+    android:descendantFocusability="blocksDescendants">
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="fill_parent"
@@ -25,6 +26,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/actual_stage_score"/>
     </LinearLayout>
+
     <TextView
         android:id="@+id/stage_score"
         android:layout_width="wrap_content"
@@ -32,6 +34,7 @@
         android:background="@drawable/score"
         android:gravity="center_horizontal|center_vertical"
         android:textColor="#ecf4e2"
-        android:textSize="13dp"
-        android:layout_margin="2dp"/>
+        android:textSize="10dp"
+        android:layout_margin="2dp"
+        android:clickable="true"/>
 </LinearLayout>
