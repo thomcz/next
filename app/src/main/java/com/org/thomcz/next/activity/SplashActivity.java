@@ -1,4 +1,4 @@
-package com.example.thomas.next.activity;
+package com.org.thomcz.next.activity;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.view.ViewConfiguration;
 
-import com.example.thomas.next.R;
+import com.org.thomcz.next.R;
 
 import java.lang.reflect.Field;
 

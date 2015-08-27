@@ -1,4 +1,4 @@
-package com.example.thomas.next.util;
+package com.org.thomcz.next.util;
 
 import android.app.AlertDialog;
 import android.content.Context;
@@ -7,9 +7,9 @@ import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.text.Html;
 
-import com.example.thomas.next.R;
-import com.example.thomas.next.object.Level;
-import com.example.thomas.next.object.Stage;
+import com.org.thomcz.next.R;
+import com.org.thomcz.next.object.Level;
+import com.org.thomcz.next.object.Stage;
 
 import java.util.ArrayList;
 import java.util.List;

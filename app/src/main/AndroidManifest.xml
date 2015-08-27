@@ -1,23 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.thomas.next" >
+    package="com.org.thomcz.next" >
 
     <application
         android:allowBackup="true"
         android:label="@string/app_name"
+        android:icon="@drawable/ic_launcher"
         android:logo="@drawable/ic_launcher"
         android:theme="@style/AppTheme" >
         <activity
-            android:name=".activity.LevelActivity"
+            android:name="com.org.thomcz.next.activity.LevelActivity"
             android:label="@string/app_name" >
         </activity>
         <activity
-            android:name=".activity.StageMenu"
-            android:label="@string/title_activity_main_menu" >
+            android:name="com.org.thomcz.next.activity.StageMenu"
+            android:label="@string/app_name" >
         </activity>
         <activity
-            android:name=".activity.SplashActivity"
-            android:label="@string/title_activity_main_menu" >
+            android:name="com.org.thomcz.next.activity.SplashActivity"
+            android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -25,12 +26,12 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".activity.LevelMenu"
-            android:label="@string/title_activity_level_menu" >
+            android:name="com.org.thomcz.next.activity.LevelMenu"
+            android:label="@string/app_name" >
         </activity>
         <activity
-            android:name=".activity.MainMenu"
-            android:label="@string/title_activity_main_menu" >
+            android:name="com.org.thomcz.next.activity.MainMenu"
+            android:label="@string/app_name" >
         </activity>
     </application>
 

@@ -1,4 +1,4 @@
-package com.example.thomas.next.activity;
+package com.org.thomcz.next.activity;
 
 import android.app.Activity;
 import android.content.DialogInterface;
@@ -10,10 +10,10 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.example.thomas.next.object.Level;
-import com.example.thomas.next.R;
-import com.example.thomas.next.util.AppUtil;
-import com.example.thomas.next.util.SharedPrefs;
+import com.org.thomcz.next.object.Level;
+import com.org.thomcz.next.R;
+import com.org.thomcz.next.util.AppUtil;
+import com.org.thomcz.next.util.SharedPrefs;
 
 /**
  * The Activity that shows the level and takes the user input.

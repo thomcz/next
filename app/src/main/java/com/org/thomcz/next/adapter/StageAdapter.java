@@ -1,4 +1,4 @@
-package com.example.thomas.next.adapter;
+package com.org.thomcz.next.adapter;
 
 import android.app.Activity;
 import android.content.Context;
@@ -6,15 +6,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.thomas.next.R;
-import com.example.thomas.next.object.Level;
-import com.example.thomas.next.object.Stage;
-import com.example.thomas.next.util.AppUtil;
+import com.org.thomcz.next.R;
+import com.org.thomcz.next.object.Level;
+import com.org.thomcz.next.object.Stage;
+import com.org.thomcz.next.util.AppUtil;
 
 import java.util.ArrayList;
 

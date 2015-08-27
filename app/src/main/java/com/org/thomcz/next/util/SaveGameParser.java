@@ -1,21 +1,8 @@
-package com.example.thomas.next.util;
+package com.org.thomcz.next.util;
 
 import android.content.Context;
-import android.util.Xml;
 
-import com.example.thomas.next.object.Level;
-import com.example.thomas.next.object.Stage;
-
-import org.xmlpull.v1.XmlPullParser;
-import org.xmlpull.v1.XmlPullParserException;
-import org.xmlpull.v1.XmlSerializer;
-
-import java.io.FileInputStream;
 import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.StringWriter;
-import java.util.ArrayList;
 
 /**
  * Created by Thomas on 29.07.2015.

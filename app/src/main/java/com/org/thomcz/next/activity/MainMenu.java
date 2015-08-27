@@ -1,4 +1,4 @@
-package com.example.thomas.next.activity;
+package com.org.thomcz.next.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -6,10 +6,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Toast;
 
-import com.example.thomas.next.R;
-import com.example.thomas.next.util.AppUtil;
+import com.org.thomcz.next.R;
+import com.org.thomcz.next.util.AppUtil;
 
 
 public class MainMenu extends AppCompatActivity {

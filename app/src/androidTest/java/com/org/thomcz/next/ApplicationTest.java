@@ -1,4 +1,4 @@
-package com.example.thomas.next;
+package com.org.thomcz.next;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

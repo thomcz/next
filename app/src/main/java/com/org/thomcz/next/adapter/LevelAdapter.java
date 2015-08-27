@@ -1,10 +1,7 @@
-package com.example.thomas.next.adapter;
+package com.org.thomcz.next.adapter;
 
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.content.Context;
-import android.content.DialogInterface;
-import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,10 +9,9 @@ import android.widget.BaseAdapter;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-import com.example.thomas.next.object.Level;
-import com.example.thomas.next.R;
-import com.example.thomas.next.util.AppUtil;
-import com.example.thomas.next.util.SharedPrefs;
+import com.org.thomcz.next.object.Level;
+import com.org.thomcz.next.R;
+import com.org.thomcz.next.util.AppUtil;
 
 import java.util.ArrayList;
 

@@ -1,4 +1,4 @@
-package com.example.thomas.next.activity;
+package com.org.thomcz.next.activity;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -10,11 +10,11 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
-import com.example.thomas.next.adapter.StageAdapter;
-import com.example.thomas.next.object.Level;
-import com.example.thomas.next.R;
-import com.example.thomas.next.util.AppUtil;
-import com.example.thomas.next.object.Stage;
+import com.org.thomcz.next.adapter.StageAdapter;
+import com.org.thomcz.next.object.Level;
+import com.org.thomcz.next.R;
+import com.org.thomcz.next.util.AppUtil;
+import com.org.thomcz.next.object.Stage;
 
 import java.util.ArrayList;
 

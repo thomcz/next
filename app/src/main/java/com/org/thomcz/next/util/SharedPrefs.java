@@ -1,21 +1,13 @@
-package com.example.thomas.next.util;
+package com.org.thomcz.next.util;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.preference.PreferenceManager;
 
-import com.example.thomas.next.object.Level;
-
-import org.json.JSONArray;
 import com.google.gson.Gson;
-
-import org.json.JSONException;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Set;
 
 /**
  * Created by thomas on 02.06.15.
