@@ -9,13 +9,11 @@ public class Stage {
     /** The name of the stage. */
     private String name;
     private boolean unlocked;
-    private int size;
     private ArrayList<Level> levels;
     private int imageRessource;
 
-    public Stage(String name, int size, ArrayList<Level> levels, int imageRessource) {
+    public Stage(String name, ArrayList<Level> levels, int imageRessource) {
         this.name = name;
-        this.size = size;
         this.levels = levels;
         this.imageRessource = imageRessource;
     }
@@ -31,14 +29,6 @@ public class Stage {
     public boolean getUnlocked() { return unlocked; }
 
     public void setUnlocked(boolean unlocked) { this.unlocked = unlocked; }
-
-    public int getSize() {
-        return size;
-    }
-
-    public void setSize(int size) {
-        this.size = size;
-    }
 
     public ArrayList<Level> getLevels() {
         return levels;

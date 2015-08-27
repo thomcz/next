@@ -26,17 +26,15 @@ public class AppUtil {
 
         Resources resources = context.getResources();
         TypedArray name = resources.obtainTypedArray(R.array.name);
-        TypedArray size = resources.obtainTypedArray(R.array.size);
         TypedArray bottom = resources.obtainTypedArray(R.array.bottom);
         TypedArray limit = resources.obtainTypedArray(R.array.limit);
         TypedArray image = resources.obtainTypedArray(R.array.image);
 
         for (int i = 0; i < name.length(); i++) {
             ArrayList<Level> foo = new ArrayList<>(levels.subList(bottom.getInt(i, 0), limit.getInt(i,0)));
-            level.add(new Stage(name.getString(i), size.getInt(i, 0), foo, image.getResourceId(i,0)));
+            level.add(new Stage(name.getString(i), foo, image.getResourceId(i,0)));
         }
         name.recycle();
-        size.recycle();
         bottom.recycle();
         limit.recycle();
         image.recycle();

@@ -5,30 +5,32 @@
         <item>Stage 1</item>
         <item>Stage 2</item>
         <item>Stage 3</item>
+        <item>Stage 4</item>
+        <item>Stage 5</item>
     </string-array>
-
-    <integer-array name="size">
-        <item>5</item>
-        <item>5</item>
-        <item>5</item>
-    </integer-array>
 
     <integer-array name="bottom">
         <item>0</item>
         <item>10</item>
         <item>20</item>
+        <item>30</item>
+        <item>40</item>
     </integer-array>
 
     <integer-array name="limit">
         <item>10</item>
         <item>20</item>
         <item>30</item>
+        <item>40</item>
+        <item>50</item>
     </integer-array>
 
     <integer-array name="image">
         <item>@drawable/alpha</item>
         <item>@drawable/beta</item>
         <item>@drawable/gamma</item>
+        <item>@drawable/delta</item>
+        <item>@drawable/epsilon</item>
     </integer-array>
 
 </resources>
