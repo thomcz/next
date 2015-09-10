@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources><string-array name="description">
+    <item>Jede Zahl &lt;b>+1&lt;/b></item>
+    <item>Jede Zahl &lt;b>+2&lt;/b></item>
+    <item>Jede Zahl &lt;b>-3&lt;/b></item>
+    <item>Abwechselnd &lt;b>-1, +2&lt;/b></item>
+    <item>Abwechselnd &lt;b>-3, +4&lt;/b></item>
+    <item>Abwechselnd &lt;b>-1, +2&lt;/b></item>
+    <item>Jede Zahl &lt;b>*3&lt;/b></item>
+    <item>Abwechselnd &lt;b>-3, -5&lt;/b></item>
+    <item>Abwechselnd &lt;b>+3, +4, +5, +6, +7, +..&lt;/b></item>
+    <item>Abwechselnd &lt;b>+2, +5&lt;/b></item>
+
+    <item>Abwechselnd &lt;b>+12, +13&lt;/b></item>
+    <item>Abwechselnd &lt;b>*2, *5&lt;/b></item>
+    <item>Abwechselnd &lt;b>+7, -9&lt;/b></item>
+    <item>Abwechselnd &lt;b>/5, +10&lt;/b></item>
+    <item>Jede Zahl &lt;b>+22&lt;/b></item>
+    <item>Abwechselnd &lt;b>+6, +12, +24, +48, +..&lt;/b></item>
+    <item>Abwechselnd &lt;b>+23, +21, +19, +17, +..&lt;/b></item>
+    <item>Die erste sechs Primzahlen</item>
+    <item>Abwechselnd &lt;b>-128, -64, -32, -16, -..&lt;/b></item>
+    <item>Abwechselnd &lt;b>-14, -20, -26, -32, -..&lt;/b></item>
+
+    <item>Die Fibonacci Folge</item>
+    <item>Die Folge der Quadrat-Zahlen</item>
+    <item>Jede Zahl &lt;b>-72&lt;/b></item>
+    <item>Abwechselnd &lt;b>+3, +5, +7, +9, +.. (Primzahlen)&lt;/b></item>
+    <item>Abwechselnd &lt;b>/2, +2&lt;/b></item>
+    <item>Abwechselnd &lt;b>+1, *2&lt;/b></item>
+    <item>Abwechselnd &lt;b>1^2, 2^2, 3^2, 4^2, ..&lt;/b></item>
+    <item>Abwechselnd &lt;b>*3, -3&lt;/b></item>
+    <item>Abwechselnd &lt;b>/2, *4&lt;/b></item>
+    <item>Abwechselnd &lt;b>*2, *3, *4, *5, *..&lt;/b></item>
+
+    <item>Abwechselnd &lt;b>+5, -2&lt;/b></item>
+    <item>Abwechselnd &lt;b>-4, *8&lt;/b></item>
+    <item>Abwechselnd &lt;b>-9, -8, -7, -6, -..&lt;/b></item>
+    <item>Quadrieren des Vorgängers</item>
+    <item>Abwechselnd &lt;b>(-5, *4, /2), (-5, *4, /2)&lt;/b></item>
+    <item>Abwechselnd &lt;b>+10, -2&lt;/b></item>
+    <item>Abwechselnd &lt;b>(2^1) - 1, (2^2) - 1, (2^3) - 1, (2^4) - 1, ..&lt;/b></item>
+    <item>Abwechselnd &lt;b>(+1, *2), (+3, *4), (+5, *6), ..&lt;/b></item>
+    <item>Abwechselnd &lt;b>-1, *2, -3, *4, -5, *6, ..&lt;/b></item>
+    <item>Abwechselnd &lt;b>2^3, 3^3, 4^3, 5^3, .., n^3&lt;/b></item>
+
+    <item>Es ist ein Palindrom</item>
+    <item>1 bis 6 in &lt;b>binär&lt;/b></item>
+    <item>Abwechselnd &lt;b>(-1, *2, /3), (-2, *3, /4), ..&lt;/b></item>
+    <item>Abwechselnd &lt;b>+3, +9, +27, .., +3^n&lt;/b></item>
+    <item>Abwechselnd &lt;b>16^2, 15^2, 14^2, ..&lt;/b></item>
+    <item>Abwechselnd &lt;b>1!, 2!, 3!, 4!, .., n!&lt;/b></item>
+    <item>Es ist die Kreiszahl pi: &lt;b>3,14159..&lt;/b></item>
+    <item>Es sind zwei Folgen: &lt;b>7, 14, 28&lt;/b> und &lt;b>21, 42, 84&lt;/b> jeweils immer &lt;b>*2&lt;/b></item>
+    <item>Abwechselnd &lt;b>0^2, 3^2, 6^2, .., (n * 3)^2&lt;/b></item>
+    <item>Der Vorgänger (n): &lt;b>(n * n) + n&lt;/b></item>
+
+
+</string-array>
+</resources>

@@ -48,7 +48,7 @@ public class AppUtil {
         TypedArray id = resources.obtainTypedArray(R.array.id);
         TypedArray series = resources.obtainTypedArray(R.array.series);
         TypedArray result = resources.obtainTypedArray(R.array.result);
-        TypedArray resultString = resources.obtainTypedArray(R.array.resultString);
+        TypedArray resultString = resources.obtainTypedArray(R.array.description);
         TypedArray score = resources.obtainTypedArray(R.array.score);
 
         ArrayList<Integer> actualScore = SharedPrefs.getScore(context);

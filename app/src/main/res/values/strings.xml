@@ -2,20 +2,20 @@
 <resources>
 
     <string name="app_name">Next</string>
-    <string name="action_settings">Einstellungen</string>
-    <string name="action_highscore">Punktzahl</string>
-    <string name="false_answer">Leider falsch, versuch es nochmal!</string>
-    <string name="show_description">Beschreibung</string>
-    <string name="dont_show_description">Du musst das Level zuerst richtig beantworten um die Beschreibung sehen zu können.</string>
-    <string name="play_btn">spielen</string>
-    <string name="settings_btn">Einstellungen</string>
+    <string name="action_settings">Settings</string>
+    <string name="action_highscore">Your Score</string>
+    <string name="false_answer">nope, try again</string>
+    <string name="show_description">description</string>
+    <string name="dont_show_description">You have to answer first correct before you can see the description!</string>
+    <string name="play_btn">play</string>
+    <string name="settings_btn">settings</string>
     <string name="series_unknown"> \? ? ? ? ? </string>
-    <string name="actual_stage_score">Aktuelle Stufen Punkte:&#160;</string>
-    <string name="your_highscore">Deine Punkte:&#160;</string>
-    <string name="who_is_next">Wer kommt als nächster?</string>
-    <string name="description_alternating">Abwechselnd</string>
-    <string name="description_every">Jede Zahl</string>
-    <string name="answer_42">Netter Versuch, aber Leider ist 42 hier nicht die Antwort ;)</string>
-    <string name="congratulation">Herzlichen Glückwunsch, du hast es geschafft :) Vielen Dank fürs spielen, es kommen bald noch mehr Level!!</string>
+    <string name="actual_stage_score">Actual Stage Score:&#160;</string>
+    <string name="your_highscore">Your Score:&#160;</string>
+    <string name="who_is_next">who is next?</string>
+    <string name="description_alternating">Alternating</string>
+    <string name="description_every">Every Number</string>
+    <string name="answer_42">Nice try but unfortunately 42 is not the answer here ;)</string>
+    <string name="congratulation">Congratulations you did it :) Thank you for playing!! There are more levels coming soon!!</string>
 
 </resources>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="description">
+        <item>Every Number &lt;b>+1&lt;/b></item>
+        <item>Every Number &lt;b>+2&lt;/b></item>
+        <item>Every Number &lt;b>-3&lt;/b></item>
+        <item>Alternating &lt;b>-1, +2&lt;/b></item>
+        <item>Alternating &lt;b>-3, +4&lt;/b></item>
+        <item>Alternating &lt;b>-1, +2&lt;/b></item>
+        <item>Every Number &lt;b>*3&lt;/b></item>
+        <item>Alternating&lt;b>-3, -5&lt;/b></item>
+        <item>Alternating&lt;b>+3, +4, +5, +6, +7, +..&lt;/b></item>
+        <item>Alternating&lt;b>+2, +5&lt;/b></item>
+
+        <item>Alternating &lt;b>+12, +13&lt;/b></item>
+        <item>Alternating &lt;b>*2, *5&lt;/b></item>
+        <item>Alternating &lt;b>+7, -9&lt;/b></item>
+        <item>Alternating &lt;b>/5, +10&lt;/b></item>
+        <item>Every Number &lt;b>+22&lt;/b></item>
+        <item>Alternating &lt;b>+6, +12, +24, +48, +..&lt;/b></item>
+        <item>Alternating &lt;b>+23, +21, +19, +17, +..&lt;/b></item>
+        <item>The Series of Prime Numbers</item>
+        <item>Alternating &lt;b>-128, -64, -32, -16, -..&lt;/b></item>
+        <item>Alternating &lt;b>-14, -20, -26, -32, -..&lt;/b></item>
+
+        <item>The Fibonacci Series</item>
+        <item>The Series of  quadratic numbers</item>
+        <item>Every Number &lt;b>-72&lt;/b></item>
+        <item>Alternating &lt;b>+3, +5, +7, +9, +.. (Prime Numbers )&lt;/b></item>
+        <item>Alternating &lt;b>/2, +2&lt;/b></item>
+        <item>Alternating &lt;b>+1, *2&lt;/b></item>
+        <item>Alternating &lt;b>1^2, 2^2, 3^2, 4^2, ..&lt;/b></item>
+        <item>Alternating &lt;b>*3, -3&lt;/b></item>
+        <item>Alternating &lt;b>/2, *4&lt;/b></item>
+        <item>Alternating &lt;b>*2, *3, *4, *5, *..&lt;/b></item>
+
+        <item>Alternating &lt;b>+5, -2&lt;/b></item>
+        <item>Alternating &lt;b>/2, +2&lt;/b></item>
+        <item>Alternating &lt;b>-9, -8, -7, -6, -..&lt;/b></item>
+        <item>Squaring the predecessor</item>
+        <item>Alternating &lt;b>-5, *4, /2&lt;/b></item>
+        <item>Alternating &lt;b>+10, -2&lt;/b></item>
+        <item>Alternating &lt;b>(2^1) - 1, (2^2) - 1, (2^3) - 1, (2^4) - 1, ..&lt;/b></item>
+        <item>Alternating &lt;b>(+1, *2), (+3, *4), (+5, *6), ..&lt;/b></item>
+        <item>Alternating &lt;b>-1, *2, -3, *4, -5, *6, ..&lt;/b></item>
+        <item>Alternating &lt;b>2^3, 3^3, 4^3, 5^3, .., n^3&lt;/b></item>
+
+        <item>It\'s a palindrom</item>
+        <item>1 to 6 in &lt;b>binary&lt;/b></item>
+        <item>Alternating &lt;b>(-1, *2, /3), (-2, *3, /4), ..&lt;/b></item>
+        <item>Alternating &lt;b>+3, +9, +27, .., +3^n&lt;/b></item>
+        <item>Alternating &lt;b>16^2, 15^2, 14^2, ..&lt;/b></item>
+        <item>Alternating &lt;b>1!, 2!, 3!, 4!, .., n!&lt;/b></item>
+        <item>It\'s pi: &lt;b>3,14159..&lt;/b></item>
+        <item>Actually they are two series: &lt;b>7, 14, 28&lt;/b> and &lt;b>21, 42, 84&lt;/b> each time &lt;b>*2&lt;/b></item>
+        <item>Alternating &lt;b>0^2, 3^2, 6^2, .., (n * 3)^2&lt;/b></item>
+        <item>The predecessor (n): &lt;b>(n * n) + n&lt;/b></item>
+
+    </string-array>
+
+</resources>

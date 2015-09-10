@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Next</string>
+    <string name="action_settings">Einstellungen</string>
+    <string name="action_highscore">Punktzahl</string>
+    <string name="false_answer">Leider falsch, versuch es nochmal!</string>
+    <string name="show_description">Beschreibung</string>
+    <string name="dont_show_description">Du musst das Level zuerst richtig beantworten um die Beschreibung sehen zu können.</string>
+    <string name="play_btn">spielen</string>
+    <string name="settings_btn">Einstellungen</string>
+    <string name="series_unknown"> \? ? ? ? ? </string>
+    <string name="actual_stage_score">Aktuelle Stufen Punkte:&#160;</string>
+    <string name="your_highscore">Deine Punkte:&#160;</string>
+    <string name="who_is_next">Wer kommt als nächster?</string>
+    <string name="description_alternating">Abwechselnd</string>
+    <string name="description_every">Jede Zahl</string>
+    <string name="answer_42">Netter Versuch, aber Leider ist 42 hier nicht die Antwort ;)</string>
+    <string name="congratulation">Herzlichen Glückwunsch, du hast es geschafft :) Vielen Dank fürs spielen, es kommen bald noch mehr Level!!</string>
+
+</resources>
