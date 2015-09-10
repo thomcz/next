@@ -83,7 +83,7 @@
         <item>1 1 2 3 5</item>
         <item>2 4 8 16 32</item>
         <item>1148 1076 1004 932</item>
-        <item>2 5 10 17 28</item>
+        <item>0 2 5 10 17</item>
         <item>40 20 22 11</item>
         <item>4 5 10 11 22</item>
         <item>1 4 9 16 25</item>
@@ -141,8 +141,8 @@
         <item>8</item>
         <item>64</item>
         <item>860</item>
-        <item>41</item>
-        <item>12</item>
+        <item>28</item>
+        <item>13</item>
         <item>23</item>
         <item>36</item>
         <item>45</item>
