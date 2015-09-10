@@ -78,6 +78,9 @@ public class AppUtil {
     public static void updateHighscore(Context context) {
         List<Integer> score  = SharedPrefs.getScore(context);
         highscore += score.get(score.size() - 1);
+        if (highscore == 7250) {
+            showDialog(context.getResources().getString(R.string.congratulation), context);
+        }
     }
 
     public static void showDialog(String msg, Context context) {

@@ -82,6 +82,8 @@ public class LevelActivity extends AppCompatActivity {
         }
         if (result == actualLevel.getResult()) {
             showDialog(actualLevel.getDescription());
+        } else if (result == 42) {
+            AppUtil.showDialog(getResources().getString(R.string.answer_42), this);
         }
         else {
             AppUtil.showDialog(getResources().getString(R.string.false_answer), this);

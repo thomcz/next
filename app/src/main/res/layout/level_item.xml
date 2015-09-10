@@ -22,7 +22,8 @@
         android:text="@string/series_unknown"
         android:textSize="30dp"
         android:gravity="center"
-        android:lines="1"
+        android:ellipsize="end"
+        android:singleLine="true"
         android:layout_weight="1"/>
     <ImageButton
         android:id="@+id/level_description_button"
