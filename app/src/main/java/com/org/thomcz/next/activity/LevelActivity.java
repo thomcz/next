@@ -2,6 +2,7 @@ package com.org.thomcz.next.activity;
 
 import android.app.Activity;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
@@ -22,7 +23,7 @@ public class LevelActivity extends AppCompatActivity {
     /** The actual level. **/
     private Level actualLevel;
     /** The level the user is actually. **/
-    private int level;
+    //private int level;
     /** This pointer. **/
     private LevelActivity activity;
     /** The TextView that shows the series. **/
@@ -38,7 +39,7 @@ public class LevelActivity extends AppCompatActivity {
         setContentView(R.layout.activity_level);
         activity = this;
         actualLevel = getIntent().getParcelableExtra(LevelMenu.ACTUAL_LEVEL);
-        level = AppUtil.getActualLevel();
+        //level = AppUtil.getActualLevel();
         series = (TextView) findViewById(R.id.series);
         answer = (EditText) findViewById(R.id.answer);
 
@@ -59,7 +60,7 @@ public class LevelActivity extends AppCompatActivity {
 
         if (id == R.id.action_description) {
             String msg = getResources().getString(R.string.dont_show_description);
-            if (level > actualLevel.getId()) {
+            if (actualLevel.getSolved()) {
                 msg = actualLevel.getDescription();
             }
             AppUtil.showDialog(msg, this);
@@ -95,9 +96,11 @@ public class LevelActivity extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 dialog.dismiss();
-                if (level == actualLevel.getId()) {
-                    SharedPrefs.addScore(getApplicationContext(), actualLevel.getScore());
-                    setResult(Activity.RESULT_OK);
+                if (!actualLevel.getSolved()) {
+                    SharedPrefs.addScore(getApplicationContext(), actualLevel);
+                    Intent intent = new Intent();
+                    intent.putExtra(LevelMenu.ACTUAL_LEVEL, actualLevel);
+                    setResult(Activity.RESULT_OK, intent);
                 }
                 activity.finish();
             }

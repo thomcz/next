@@ -12,8 +12,9 @@ public class Stage {
     private ArrayList<Level> levels;
     private int imageRessource;
 
-    public Stage(String name, ArrayList<Level> levels, int imageRessource) {
+    public Stage(String name, boolean unlocked, ArrayList<Level> levels, int imageRessource) {
         this.name = name;
+        this.unlocked = unlocked;
         this.levels = levels;
         this.imageRessource = imageRessource;
     }

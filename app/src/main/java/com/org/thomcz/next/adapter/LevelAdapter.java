@@ -24,12 +24,9 @@ public class LevelAdapter extends BaseAdapter {
     private Activity activity;
     /** List of all levels of the stage. **/
     private ArrayList<Level> level;
-    /** actual level of the user. **/
-    private int actualLevel;
 
     public LevelAdapter(ArrayList<Level> level, Activity activity) {
         this.level = level;
-        this.actualLevel = AppUtil.getActualLevel();
         this.activity = activity;
         inflater = (LayoutInflater)this.activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
@@ -54,17 +51,16 @@ public class LevelAdapter extends BaseAdapter {
         View v = convertView;
         if (v == null)
             v = inflater.inflate(R.layout.level_item, null);
-        //((TextView)v.findViewById(R.id.series_text)).setText(level.get(position).getSeries());
         ((TextView)v.findViewById(R.id.level_score)).setText(String.valueOf(level.get(position).getScore()));
-        ((ImageButton)v.findViewById(R.id.level_description_button)).setOnClickListener(new View.OnClickListener() {
+        v.findViewById(R.id.level_description_button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String message = level.get(position).getId() < actualLevel ? level.get(position).getDescription() :
+                String message = level.get(position).getSolved() ? level.get(position).getDescription() :
                         activity.getResources().getString(R.string.dont_show_description);
                 AppUtil.showDialog(message, activity);
             }
         });
-        if (level.get(position).getId() <= actualLevel) {
+        if (level.get(position).getUnlocked()) {
             v.setBackgroundResource(R.drawable.rounded_background);
             ((TextView)v.findViewById(R.id.series_text)).setText(level.get(position).getSeries());
         } else {
@@ -77,16 +73,8 @@ public class LevelAdapter extends BaseAdapter {
 
     @Override
     public boolean isEnabled(int position) {
-       if (level.get(position).getId() <= actualLevel)
+       if (level.get(position).getUnlocked())
            return true;
        return false;
     }
-
-    /**
-     * Sets the actual level of the user.
-     */
-    public void setLevel() {
-        this.actualLevel = AppUtil.getActualLevel();
-    }
-
 }

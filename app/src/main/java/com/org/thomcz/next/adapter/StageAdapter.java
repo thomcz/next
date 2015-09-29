@@ -25,7 +25,7 @@ public class StageAdapter extends BaseAdapter{
     /** The list of levelListItems **/
     private ArrayList<Stage> stages;
     /** The level the user is actually. **/
-    private int actualLevel;
+   // private int actualLevel;
     private View v;
 
     /**
@@ -36,7 +36,7 @@ public class StageAdapter extends BaseAdapter{
      */
     public StageAdapter(ArrayList<Stage> stages, int actualLevel, Activity activity) {
         this.activity = activity;
-        this.actualLevel = actualLevel;
+        //this.actualLevel = actualLevel;
         inflater = (LayoutInflater)this.activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         this.stages = stages;
     }
@@ -63,29 +63,30 @@ public class StageAdapter extends BaseAdapter{
             v = inflater.inflate(R.layout.stage_item, null);
         ((TextView)v.findViewById(R.id.stage_name)).setText(stages.get(position).getName());
 
-        final String actualStageScore = String.valueOf(getActualStageScore(stages.get(position), position));
+        final String actualStageScore = String.valueOf(getActualStageScore(stages.get(position)));
         ((TextView)v.findViewById(R.id.actual_stage_score)).setText(activity.getResources().getString(R.string.actual_stage_score) + actualStageScore);
 
         final String stageScore = String.valueOf(getStageScore(stages.get(position)));
-        ((TextView)v.findViewById(R.id.stage_score)).setOnClickListener(new View.OnClickListener() {
+        v.findViewById(R.id.stage_score).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String message = stages.get(position).getName() + ": " + "<b>" + actualStageScore + " / " + stageScore +"</b>";
                 AppUtil.showDialog(message, activity);
             }
         });
-        ((TextView)v.findViewById(R.id.stage_score)).setText(stageScore);
+        ((TextView) v.findViewById(R.id.stage_score)).setText(stageScore);
 
-        ((ImageView)v.findViewById(R.id.stage_Image)).setImageResource(stages.get(position).getImageRessource());
+        ((ImageView) v.findViewById(R.id.stage_Image)).setImageResource(stages.get(position).getImageRessource());
 
-        if (position < stages.size() % 10 && actualLevel >= position * 10) {
+        if (stages.get(position).getUnlocked()) {
             v.setBackgroundResource(R.drawable.rounded_background);
         }
         return v;
     }
     @Override
     public boolean isEnabled(int position){
-        if (position < stages.size() % 10 && actualLevel >= position * 10) {
+
+        if (stages.get(position).getUnlocked()) {
             return true;
         }
         return false;
@@ -98,8 +99,8 @@ public class StageAdapter extends BaseAdapter{
     /**
      * Sets the actual level of the user.
      */
-    public void setLevel() {
-        this.actualLevel = AppUtil.getActualLevel();
+    public void setLevel(ArrayList<Level> updatedLevels) {
+        stages.get(updatedLevels.get(0).getId() / updatedLevels.size()).setLevels(updatedLevels);
     }
 
     private int getStageScore(Stage stage) {
@@ -109,12 +110,13 @@ public class StageAdapter extends BaseAdapter{
         }
         return score;
     }
-    private int getActualStageScore(Stage stage, int position) {
+    private int getActualStageScore(Stage stage) {
         int score = 0;
-        int index =  actualLevel - (position * 10);
-        for (int i = 0; i < stage.getLevels().size() && index > 0; i++) {
-            score += stage.getLevels().get(i).getScore();
-            index--;
+        for (Level level : stage.getLevels()) {
+            if (!level.getSolved()) {
+                break;
+            }
+            score += level.getScore();
         }
         return score;
     }

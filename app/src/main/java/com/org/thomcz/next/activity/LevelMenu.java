@@ -9,6 +9,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.org.thomcz.next.object.Level;
 import com.org.thomcz.next.R;
@@ -32,9 +33,15 @@ public class LevelMenu extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_level_menu);
         levels = getIntent().getParcelableArrayListExtra(StageMenu.STAGE_LEVELS);
+        Toast.makeText(getApplicationContext(), "onCreate: levels.getIntent: " +levels.size(), Toast.LENGTH_SHORT).show();
+        /*if (levels == null) {
+            levels = savedInstanceState.getParcelableArrayList(StageMenu.STAGE_LEVELS);
+            Toast.makeText(getApplicationContext(), "onCreate: levels=savedInstance: " +levels.size(), Toast.LENGTH_SHORT).show();
+
+        }*/
         levelAdapter = new LevelAdapter(levels, this);
 
-        seriesListview = ((ListView)findViewById(R.id.series_listview));
+        seriesListview = ((ListView) findViewById(R.id.series_listview));
         seriesListview.setAdapter(levelAdapter);
         seriesListview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -46,16 +53,49 @@ public class LevelMenu extends AppCompatActivity {
         });
     }
 
+    /*@Override
+    public void onSaveInstanceState(Bundle savedInstanceState) {
+        super.onSaveInstanceState(savedInstanceState);
+        savedInstanceState.putParcelableArrayList(StageMenu.STAGE_LEVELS, levels);
+    }*/
+    /*@Override
+    public void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        levels = savedInstanceState.getParcelableArrayList(StageMenu.STAGE_LEVELS);
+    }*/
+
+    /*@Override
+    protected void onPause() {
+
+    }
+    @Override
+      protected void onResume() {
+
+    }*/
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == 0) {
             if (resultCode == Activity.RESULT_OK) {
-                Intent intent = new Intent();
-                this.setResult(Activity.RESULT_OK, intent);
-                levelAdapter.setLevel();
+                Level l = data.getParcelableExtra(ACTUAL_LEVEL);
+                setLevel(l);
                 levelAdapter.notifyDataSetChanged();
+                Intent intent = new Intent();
+                intent.putExtra(StageMenu.STAGE_LEVELS, levels);
+                this.setResult(Activity.RESULT_OK, intent);
             }
         }
+    }
+
+    /**
+     * Sets the actual level of the user.
+     */
+    private void setLevel(Level oldLevel) {
+        //this.actualLevel = AppUtil.getActualLevel();
+        int index = (oldLevel.getId() % 10);
+        if (index < levels.size() - 1) {
+            levels.get(index + 1).setUnlocked(true);
+        }
+        levels.get(index).setSolved(true);
     }
 
     @Override

@@ -18,8 +18,6 @@ import java.util.List;
  * Created by Thomas on 28.07.2015.
  */
 public class AppUtil {
-    private static int actualLevel = 0;
-    private static int highscore = 0;
 
     public static ArrayList<Stage> getStages(Context context, ArrayList<Level> levels) {
         ArrayList<Stage> level = new ArrayList<Stage>();
@@ -31,8 +29,8 @@ public class AppUtil {
         TypedArray image = resources.obtainTypedArray(R.array.image);
 
         for (int i = 0; i < name.length(); i++) {
-            ArrayList<Level> foo = new ArrayList<>(levels.subList(bottom.getInt(i, 0), limit.getInt(i,0)));
-            level.add(new Stage(name.getString(i), foo, image.getResourceId(i,0)));
+            ArrayList<Level> stageLevel = new ArrayList<>(levels.subList(bottom.getInt(i, 0), limit.getInt(i,0)));
+            level.add(new Stage(name.getString(i), stageLevel.get(0).getUnlocked(), stageLevel, image.getResourceId(i,0)));
         }
         name.recycle();
         bottom.recycle();
@@ -52,12 +50,11 @@ public class AppUtil {
         TypedArray score = resources.obtainTypedArray(R.array.score);
 
         ArrayList<Integer> actualScore = SharedPrefs.getScore(context);
-        actualLevel = actualScore.size();
 
         for (int i = 0; i < id.length(); i++) {
             int levelScore = actualScore.size() > i ? actualScore.get(i) : 0;
-            levels.add(new Level(id.getInt(i, 0), series.getString(i), result.getInt(i, 0), resultString.getString(i), score.getInt(i, 0), levelScore));
-            highscore += levelScore;
+            int levelId = id.getInt(i, 0);
+            levels.add(new Level(levelId, levelId <= actualScore.size(), levelScore != 0, series.getString(i), result.getInt(i, 0), resultString.getString(i), score.getInt(i, 0), levelScore));
         }
         id.recycle();
         series.recycle();
@@ -65,22 +62,6 @@ public class AppUtil {
         resultString.recycle();
 
         return levels;
-    }
-
-    public static int getActualLevel() {
-        return actualLevel;
-    }
-    public static void updateActualLevel(Context context) {
-        actualLevel = SharedPrefs.getScore(context).size();
-    }
-    public static int getHighscore() { return highscore; }
-
-    public static void updateHighscore(Context context) {
-        List<Integer> score  = SharedPrefs.getScore(context);
-        highscore += score.get(score.size() - 1);
-        if (highscore == 7250) {
-            showDialog(context.getResources().getString(R.string.congratulation), context);
-        }
     }
 
     public static void showDialog(String msg, Context context) {

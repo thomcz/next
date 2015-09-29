@@ -40,7 +40,6 @@ public class StageMenu extends AppCompatActivity {
 
         levels = AppUtil.getLevel(this);
         levelItems = AppUtil.getStages(this, levels);
-        actualLevel = AppUtil.getActualLevel();
         stageAdapter = new StageAdapter(levelItems, actualLevel, this);
         levelList = ((ListView)findViewById(R.id.level_listview));
         levelList.setAdapter(stageAdapter);
@@ -58,7 +57,8 @@ public class StageMenu extends AppCompatActivity {
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == 0) {
             if (resultCode == Activity.RESULT_OK) {
-                stageAdapter.setLevel();
+                ArrayList<Level> l = data.getParcelableExtra(STAGE_LEVELS);
+                levelItems.get(l.get(0).getId() / 10).setLevels(l);
                 stageAdapter.notifyDataSetChanged();
             }
         }
@@ -75,11 +75,24 @@ public class StageMenu extends AppCompatActivity {
         int id = item.getItemId();
 
         if (id == R.id.action_highscore) {
-            String message = getResources().getString(R.string.your_highscore) + "<b>" + AppUtil.getHighscore() + "</b>";
+            String message = getResources().getString(R.string.your_highscore) + "<b>" + getHighscore() + "</b>";
             AppUtil.showDialog(message, this);
             return true;
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    private int getHighscore() {
+        int score = 0;
+        for (Stage s : levelItems) {
+            for (Level l : s.getLevels()) {
+                if (!l.getSolved()) {
+                    return score;
+                }
+                score += l.getScore();
+            }
+        }
+        return score;
     }
 }

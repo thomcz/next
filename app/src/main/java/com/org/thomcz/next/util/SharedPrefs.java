@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 
 import com.google.gson.Gson;
+import com.org.thomcz.next.object.Level;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -61,15 +62,13 @@ public class SharedPrefs {
 
     }
 
-    public static void addScore(Context context, int score) {
+    public static void addScore(Context context, Level level) {
         ArrayList<Integer> scoreList = getScore(context);
         if (scoreList == null)
             scoreList = new ArrayList<Integer>();
 
-        scoreList.add(score);
+        scoreList.add(level.getScore());
         saveScore(context, scoreList);
-        AppUtil.updateActualLevel(context);
-        AppUtil.updateHighscore(context);
     }
 
     public static ArrayList<Integer> getScore(Context context) {

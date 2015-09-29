@@ -12,6 +12,8 @@ public class Level implements Parcelable {
     private int id;
     /** shows if the level is unlocked by the user. */
     private boolean unlocked;
+
+    private boolean solved;
     /** the series to complete. **/
     private String series;
     /** the result of this level. **/
@@ -26,13 +28,16 @@ public class Level implements Parcelable {
     /**
      * Constructor of the level.
      * @param id the level id
+     * @param unlocked if level is unlocked
      * @param series the series to complete
      * @param result the result of the level
      * @param description the description of the level
      * @param score score of the level
      */
-    public Level(int id, String series, int result, String description, int score, int actualScore) {
+    public Level(int id, boolean unlocked, boolean solved, String series, int result, String description, int score, int actualScore) {
         this.id = id;
+        this.unlocked = unlocked;
+        this.solved = solved;
         this.series = series;
         this.result = result;
         this.description = description;
@@ -48,6 +53,7 @@ public class Level implements Parcelable {
     private Level(Parcel in) {
         id = in.readInt();
         unlocked = (boolean) in.readValue(null);
+        solved = (boolean) in.readValue(null);
         series = in.readString();
         result = in.readInt();
         description = in.readString();
@@ -69,6 +75,14 @@ public class Level implements Parcelable {
      */
     public boolean getUnlocked() {
         return unlocked;
+    }
+
+    /**
+     * Returns if the level is solved.
+     * @return true if it is solved, false otherwise
+     */
+    public boolean getSolved() {
+        return solved;
     }
 
     /**
@@ -124,6 +138,12 @@ public class Level implements Parcelable {
     public void setUnlocked(boolean unlocked) {this.unlocked = unlocked; }
 
     /**
+     * Set if the level is solved.
+     * @param solved true if the level is solved, false otherwise
+     */
+    public void setSolved(boolean solved) {this.solved = solved; }
+
+    /**
      * Set the series.
      * @param series to set
      */
@@ -168,6 +188,7 @@ public class Level implements Parcelable {
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeInt(id);
         dest.writeValue(unlocked);
+        dest.writeValue(solved);
         dest.writeString(series);
         dest.writeInt(result);
         dest.writeString(description);
