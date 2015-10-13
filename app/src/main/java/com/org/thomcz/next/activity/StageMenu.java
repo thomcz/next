@@ -57,7 +57,10 @@ public class StageMenu extends AppCompatActivity {
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == 0) {
             if (resultCode == Activity.RESULT_OK) {
-                ArrayList<Level> l = data.getParcelableExtra(STAGE_LEVELS);
+                ArrayList<Level> l = data.getParcelableArrayListExtra(STAGE_LEVELS);
+                if (l == null) {
+                    return;
+                }
                 levelItems.get(l.get(0).getId() / 10).setLevels(l);
                 stageAdapter.notifyDataSetChanged();
             }
