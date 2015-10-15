@@ -5,10 +5,14 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.org.thomcz.next.object.Level;
@@ -42,6 +46,16 @@ public class LevelActivity extends AppCompatActivity {
         //level = AppUtil.getActualLevel();
         series = (TextView) findViewById(R.id.series);
         answer = (EditText) findViewById(R.id.answer);
+        answer.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if (actionId == EditorInfo.IME_ACTION_DONE) {
+                    findViewById(R.id.send).performClick();
+                    return true;
+                }
+                return false;
+            }
+        });
 
         series.setText(actualLevel.getSeries());
     }

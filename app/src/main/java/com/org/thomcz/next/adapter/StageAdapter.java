@@ -79,7 +79,7 @@ public class StageAdapter extends BaseAdapter{
         ((ImageView) v.findViewById(R.id.stage_Image)).setImageResource(stages.get(position).getImageRessource());
 
         if (stages.get(position).getUnlocked()) {
-            v.setBackgroundResource(R.drawable.rounded_background);
+            v.setBackgroundResource(R.drawable.unlocked_background);
         }
         return v;
     }

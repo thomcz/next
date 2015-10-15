@@ -12,7 +12,7 @@
     <string name="series_unknown"> \? ? ? ? ? </string>
     <string name="actual_stage_score">Aktuelle Stufen Punkte:&#160;</string>
     <string name="your_highscore">Deine Punkte:&#160;</string>
-    <string name="who_is_next">Wer kommt als nächster?</string>
+    <string name="who_is_next">Wer ist der nächste?</string>
     <string name="description_alternating">Abwechselnd</string>
     <string name="description_every">Jede Zahl</string>
     <string name="answer_42">Netter Versuch, aber Leider ist 42 hier nicht die Antwort ;)</string>

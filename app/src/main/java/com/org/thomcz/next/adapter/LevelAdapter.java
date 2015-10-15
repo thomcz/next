@@ -6,7 +6,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.org.thomcz.next.object.Level;
@@ -60,11 +59,15 @@ public class LevelAdapter extends BaseAdapter {
                 AppUtil.showDialog(message, activity);
             }
         });
-        if (level.get(position).getUnlocked()) {
-            v.setBackgroundResource(R.drawable.rounded_background);
+        if (level.get(position).getUnlocked() && !level.get(position).getSolved()) {
+            v.setBackgroundResource(R.drawable.actual_background);
+            ((TextView)v.findViewById(R.id.series_text)).setText(level.get(position).getSeries());
+        }
+        else if (level.get(position).getUnlocked()) {
+            v.setBackgroundResource(R.drawable.unlocked_background);
             ((TextView)v.findViewById(R.id.series_text)).setText(level.get(position).getSeries());
         } else {
-            v.setBackgroundResource(R.drawable.rounded_background_gray);
+            v.setBackgroundResource(R.drawable.locked_background_gray);
             ((TextView)v.findViewById(R.id.series_text)).setText(activity.getResources().getString(R.string.series_unknown));
         }
 
