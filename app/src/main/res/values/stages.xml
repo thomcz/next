@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string-array name="name">
+    <string-array name="name" translatable="false">
         <item>Bernoulli</item>
         <item>Euler</item>
         <item>Riemann</item>

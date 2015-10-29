@@ -43,8 +43,7 @@ public class MainMenu extends AppCompatActivity {
     }
 
     public void settings(View view) {
-        AppUtil.showDialog("coming soon!", this);
         /*Intent intent = new Intent(getApplicationContext(), SettingsActivity.class);
-        startActivity(intent);*/
+        startActivityForResult(intent, 1);*/
     }
 }

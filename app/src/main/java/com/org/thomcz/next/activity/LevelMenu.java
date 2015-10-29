@@ -33,7 +33,7 @@ public class LevelMenu extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_level_menu);
         levels = getIntent().getParcelableArrayListExtra(StageMenu.STAGE_LEVELS);
-        Toast.makeText(getApplicationContext(), "onCreate: levels.getIntent: " +levels.size(), Toast.LENGTH_SHORT).show();
+        //Toast.makeText(getApplicationContext(), "onCreate: levels.getIntent: " +levels.size(), Toast.LENGTH_SHORT).show();
         /*if (levels == null) {
             levels = savedInstanceState.getParcelableArrayList(StageMenu.STAGE_LEVELS);
             Toast.makeText(getApplicationContext(), "onCreate: levels=savedInstance: " +levels.size(), Toast.LENGTH_SHORT).show();

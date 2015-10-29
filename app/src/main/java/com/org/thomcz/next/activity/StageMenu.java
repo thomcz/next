@@ -17,6 +17,7 @@ import com.org.thomcz.next.util.AppUtil;
 import com.org.thomcz.next.object.Stage;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * The Menu to choose a stage.
@@ -28,7 +29,7 @@ public class StageMenu extends AppCompatActivity {
     /** List of all levels. **/
     private ArrayList<Level> levels;
     /** List of all stages. **/
-    private ArrayList<Stage> levelItems;
+    private ArrayList<Stage> stages;
     private ListView levelList;
 
     public final static String STAGE_LEVELS = "stage_levels";
@@ -39,15 +40,15 @@ public class StageMenu extends AppCompatActivity {
         setContentView(R.layout.activity_stage_menu);
 
         levels = AppUtil.getLevel(this);
-        levelItems = AppUtil.getStages(this, levels);
-        stageAdapter = new StageAdapter(levelItems, actualLevel, this);
+        stages = AppUtil.getStages(this, levels);
+        stageAdapter = new StageAdapter(stages, actualLevel, this);
         levelList = ((ListView)findViewById(R.id.level_listview));
         levelList.setAdapter(stageAdapter);
         levelList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent levelMenu = new Intent(getApplicationContext(), LevelMenu.class);
-                levelMenu.putParcelableArrayListExtra(STAGE_LEVELS, levelItems.get(position).getLevels());
+                levelMenu.putParcelableArrayListExtra(STAGE_LEVELS, stages.get(position).getLevels());
                 startActivityForResult(levelMenu, 0);
             }
         });
@@ -61,10 +62,34 @@ public class StageMenu extends AppCompatActivity {
                 if (l == null) {
                     return;
                 }
-                levelItems.get(l.get(0).getId() / 10).setLevels(l);
+                int index = l.get(0).getId() / 10;
+                stages.get(index).setLevels(l);
+                setUnlocked(index);
                 stageAdapter.notifyDataSetChanged();
             }
         }
+    }
+
+    private void setUnlocked(int index) {
+        if (index < stages.size() - 1) {
+            if (allSolved(stages.get(index).getLevels())) {
+                stages.get(index + 1).setUnlocked(true);
+                stages.get(index + 1).getLevels().get(0).setUnlocked(true);
+            }
+        } else if (index == stages.size() - 1) {
+            if (allSolved(stages.get(index).getLevels())) {
+                AppUtil.showDialog(getResources().getString(R.string.congratulation), this);
+            }
+        }
+    }
+
+    private boolean allSolved(List<Level> levelList) {
+        for  (Level l : levelList) {
+            if (!l.getSolved()) {
+                return false;
+            }
+        }
+        return true;
     }
 
     @Override
@@ -88,7 +113,7 @@ public class StageMenu extends AppCompatActivity {
 
     private int getHighscore() {
         int score = 0;
-        for (Stage s : levelItems) {
+        for (Stage s : stages) {
             for (Level l : s.getLevels()) {
                 if (!l.getSolved()) {
                     return score;

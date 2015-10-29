@@ -57,7 +57,7 @@
         <item>49</item>
     </integer-array>
 
-    <string-array name="series">
+    <string-array name="series" translatable="false">
         <item>0 1 2 3 4</item>
         <item>0 2 4 6 8</item>
         <item>17 14 11 8 5</item>
