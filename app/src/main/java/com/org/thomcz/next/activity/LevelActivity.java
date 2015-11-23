@@ -10,9 +10,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
-import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.org.thomcz.next.object.Level;
@@ -35,15 +33,12 @@ public class LevelActivity extends AppCompatActivity {
     /** The EditText that takes the answer. **/
     private EditText answer;
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_level);
         activity = this;
         actualLevel = getIntent().getParcelableExtra(LevelMenu.ACTUAL_LEVEL);
-        //level = AppUtil.getActualLevel();
         series = (TextView) findViewById(R.id.series);
         answer = (EditText) findViewById(R.id.answer);
         answer.setOnEditorActionListener(new TextView.OnEditorActionListener() {
@@ -56,10 +51,25 @@ public class LevelActivity extends AppCompatActivity {
                 return false;
             }
         });
-
-        series.setText(actualLevel.getSeries());
+        addSeries();
     }
 
+    private void addSeries() {
+        String[] split = actualLevel.getSeries().split("\\s+");
+        StringBuilder temp = new StringBuilder();
+        StringBuilder text = new StringBuilder();
+        for (String s : split) {
+            float actualSize = series.getPaint().measureText(temp.append(s + " ").toString());
+            if (actualSize < AppUtil.getDisplaySize(this).x) {
+                text.append(s + " ");
+            } else {
+                text.deleteCharAt(text.length() - 1);
+                text.append("\n" + s + " ");
+                temp.setLength(0);
+            }
+        }
+        series.setText(text.toString().trim());
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

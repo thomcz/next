@@ -1,11 +1,14 @@
 package com.org.thomcz.next.util;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
+import android.graphics.Point;
 import android.text.Html;
+import android.view.Display;
 
 import com.org.thomcz.next.R;
 import com.org.thomcz.next.object.Level;
@@ -80,5 +83,12 @@ public class AppUtil {
         ad.setMessage(Html.fromHtml(msg));
         ad.setButton("OK", onClickListener);
         ad.show();
+    }
+
+    public static Point getDisplaySize(Activity activity) {
+        Display display = activity.getWindowManager().getDefaultDisplay();
+        Point size = new Point();
+        display.getSize(size);
+        return size;
     }
 }
