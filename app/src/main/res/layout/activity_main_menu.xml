@@ -35,11 +35,11 @@
         android:layout_marginBottom="5pt"
         android:onClick="play"/>
 
-    <Button
+    <!--<Button
         android:layout_width="200dp"
         android:layout_height="30dp"
         android:text="@string/settings_btn"
         android:background="@color/menu_btn"
-        android:onClick="settings"/>
+        android:onClick="settings"/>-->
 
 </LinearLayout>
