@@ -1,9 +1,10 @@
 package com.org.thomcz.next.util;
 
 import android.app.Activity;
-import android.app.AlertDialog;
+import android.app.AlertDialog.Builder;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.graphics.Point;
@@ -15,7 +16,6 @@ import com.org.thomcz.next.object.Level;
 import com.org.thomcz.next.object.Stage;
 
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by Thomas on 28.07.2015.
@@ -74,15 +74,18 @@ public class AppUtil {
                 dialogInterface.dismiss();
             }
         };
-        showDialog(msg, context, onClickListener);
+        showDialog(msg, context, null, onClickListener);
     }
 
-    public static void showDialog(String msg, Context context, DialogInterface.OnClickListener onClickListener) {
-        AlertDialog ad = new AlertDialog.Builder(context).create();
-        ad.setCancelable(false); // This blocks the 'BACK' button
-        ad.setMessage(Html.fromHtml(msg));
-        ad.setButton("OK", onClickListener);
-        ad.show();
+    public static void showDialog(String msg, Context context, OnClickListener positiveCL, OnClickListener negativeCL) {
+        Builder builder = new Builder(context);
+        builder.setCancelable(false); // This blocks the 'BACK' button
+        builder.setMessage(Html.fromHtml(msg));
+        if (positiveCL != null) {
+            builder.setPositiveButton("next", positiveCL);
+        }
+        builder.setNegativeButton("OK", negativeCL);
+        builder.create().show();
     }
 
     public static Point getDisplaySize(Activity activity) {

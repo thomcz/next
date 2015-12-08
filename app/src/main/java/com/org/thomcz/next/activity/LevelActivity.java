@@ -2,6 +2,7 @@ package com.org.thomcz.next.activity;
 
 import android.app.Activity;
 import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -116,7 +117,20 @@ public class LevelActivity extends AppCompatActivity {
     }
 
     private void showDialog(String msg) {
-        DialogInterface.OnClickListener onClickListener = new DialogInterface.OnClickListener() {
+
+        OnClickListener positiveCL = null;
+        if (actualLevel.getSolved() || actualLevel.getId() % 10 == 9) {
+            positiveCL = null;
+        } else {
+            positiveCL = getClickListener(Activity.RESULT_OK);
+        }
+        OnClickListener negativeCL = getClickListener(Activity.RESULT_CANCELED);
+
+        AppUtil.showDialog(msg, this, positiveCL, negativeCL);
+    }
+
+    private OnClickListener getClickListener(final int result) {
+        return new OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 dialog.dismiss();
@@ -124,11 +138,17 @@ public class LevelActivity extends AppCompatActivity {
                     SharedPrefs.addScore(getApplicationContext(), actualLevel);
                     Intent intent = new Intent();
                     intent.putExtra(LevelMenu.ACTUAL_LEVEL, actualLevel);
-                    setResult(Activity.RESULT_OK, intent);
+                    setResult(result, intent);
                 }
                 activity.finish();
             }
         };
-        AppUtil.showDialog(msg, this, onClickListener);
+    }
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent();
+        intent.putExtra(LevelMenu.ACTUAL_LEVEL, actualLevel);
+        setResult(LevelMenu.RESULT_BACK_PRESSED, intent);
+        activity.finish();
     }
 }
