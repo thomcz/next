@@ -74,10 +74,10 @@ public class LevelAdapter extends BaseAdapter {
         return v;
     }
 
-    @Override
+    /*@Override
     public boolean isEnabled(int position) {
-       if (level.get(position).getUnlocked())
+       //if (level.get(position).getUnlocked())
            return true;
-       return false;
-    }
+       //return false;
+    }*/
 }

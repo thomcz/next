@@ -17,6 +17,8 @@
     <string name="description_every">Every Number</string>
     <string name="answer_42">Nice try but unfortunately 42 is not the answer here ;)</string>
     <string name="congratulation">Congratulations you did it :) Thank you for playing!! There are more levels coming soon!!</string>
+    <string name="not_unlocked_level">You haven\'t unlocked it yet. Play the previous levels first.</string>
+    <string name="not_unlocked_stage">You haven\'t unlocked it yet. Play the previous stages first.</string>
 
 
 </resources>

@@ -1,6 +1,7 @@
 package com.org.thomcz.next.activity;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -14,6 +15,7 @@ import android.widget.Toast;
 import com.org.thomcz.next.object.Level;
 import com.org.thomcz.next.R;
 import com.org.thomcz.next.adapter.LevelAdapter;
+import com.org.thomcz.next.util.AppUtil;
 
 import java.util.ArrayList;
 
@@ -42,7 +44,12 @@ public class LevelMenu extends AppCompatActivity {
         seriesListview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                openLevel(position);
+                if (levels.get(position).getUnlocked()) {
+                    openLevel(position);
+                } else {
+                    AppUtil.showDialog(getResources().getString(R.string.not_unlocked_level), view.getContext());
+                }
+
             }
         });
     }

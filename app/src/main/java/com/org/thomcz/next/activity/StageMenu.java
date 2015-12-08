@@ -47,9 +47,11 @@ public class StageMenu extends AppCompatActivity {
         levelList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent levelMenu = new Intent(getApplicationContext(), LevelMenu.class);
-                levelMenu.putParcelableArrayListExtra(STAGE_LEVELS, stages.get(position).getLevels());
-                startActivityForResult(levelMenu, 0);
+                if (stages.get(position).getUnlocked()) {
+                    openStage(position);
+                } else {
+                    AppUtil.showDialog(getResources().getString(R.string.not_unlocked_stage), view.getContext());
+                }
             }
         });
     }
@@ -68,6 +70,12 @@ public class StageMenu extends AppCompatActivity {
                 stageAdapter.notifyDataSetChanged();
             }
         }
+    }
+
+    private void openStage(int position) {
+        Intent levelMenu = new Intent(getApplicationContext(), LevelMenu.class);
+        levelMenu.putParcelableArrayListExtra(STAGE_LEVELS, stages.get(position).getLevels());
+        startActivityForResult(levelMenu, 0);
     }
 
     private void setUnlocked(int index) {

@@ -17,5 +17,7 @@
     <string name="description_every">Jede Zahl</string>
     <string name="answer_42">Netter Versuch, aber Leider ist 42 hier nicht die Antwort ;)</string>
     <string name="congratulation">Herzlichen Glückwunsch, du hast es geschafft :) Vielen Dank fürs spielen, es kommen bald noch mehr Level!!</string>
+    <string name="not_unlocked_level">Noch nicht freigeschaltet. Spiele zuerst die vorherigen Level.</string>
+    <string name="not_unlocked_stage">Noch nicht freigeschaltet. Spiele zuerst die vorherigen Stufen.</string>
 
 </resources>

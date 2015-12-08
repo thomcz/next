@@ -83,14 +83,14 @@ public class StageAdapter extends BaseAdapter{
         }
         return v;
     }
-    @Override
+   /* @Override
     public boolean isEnabled(int position){
 
-        if (stages.get(position).getUnlocked()) {
+        //if (stages.get(position).getUnlocked()) {
             return true;
-        }
-        return false;
-    }
+        //}
+        //return false;
+    }*/
     @Override
     public boolean areAllItemsEnabled(){
         return false;
